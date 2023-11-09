@@ -1,0 +1,48 @@
+
+#player-img {
+    border-radius: 50%;
+    height: 5rem;
+    width: 5rem;
+}
+
+#player-title {
+    font-size: 2rem;
+    font-style: bold;
+}
+
+#player-stats {
+    margin-top: 5rem;
+}
+
+.facebook-icon {
+    font-size: 32px;
+    color: blue;
+    margin: 1rem;
+}
+
+.twitter-icon {
+    font-size: 32px;
+    color: lightblue;
+    margin: 1rem;
+}
+
+.instagram-icon {
+    font-size: 32px;
+    color: orangered;
+    margin: 1rem;
+}
+
+.noticias {
+    margin-top: 10rem;
+}
+
+#noticia-title {
+    font-size: 1rem;
+    text-decoration: none;
+    color: black;
+}
+
+#noticia-img {
+    height: 10rem;
+    width: 10rem;
+}

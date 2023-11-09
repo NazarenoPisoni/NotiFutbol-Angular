@@ -1,0 +1,10 @@
+<app-navbar></app-navbar>
+<div>
+    <h2>Most followed teams</h2>
+    <div *ngFor="let team of teams">
+        <div *ngIf="isImportantTeam(team.team.name)">
+            <img [src]="team.team.logo" alt="Team Logo">
+            <p>{{ team.team.name }}</p>
+        </div>
+    </div>
+</div>

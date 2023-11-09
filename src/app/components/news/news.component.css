@@ -1,0 +1,16 @@
+.noticias {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.noticia {
+    height: 30rem;
+    width: 20rem;
+}
+
+.noticia-img {
+    height: 70%;
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: 2rem;
+}

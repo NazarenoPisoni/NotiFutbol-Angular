@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<p>PLAYER</p>
+<div *ngFor="let p of player">
+    <img [src]="p.strCutout" id="player-img"><span id="player-title">{{ p.strPlayer }}</span>
+
+    <div id="player-stats">
+        <p>KEY STATS</p>
+        <p>Nationality: {{ p.strNationality}}</p>
+        <p>Team: {{ p.strTeam}}</p>
+        <p>Position: {{ p.strPosition}}</p>
+        <p>Player Number: {{ p.strNumber}}</p>
+        <p>Date of Born: {{ p.dateBorn}}</p>
+        <p>Birth Location: {{ p.strBirthLocation}}</p>
+        <p>Status: {{ p.strStatus}}</p>
+        <a [href]="'https://' + p.strFacebook" target="_blank"><i class="bi bi-facebook facebook-icon"></i></a>
+        <a [href]="'https://' + p.strTwitter" target="_blank"><i class="bi bi-twitter twitter-icon"></i></a>
+        <a [href]="'https://' + p.strInstagram" target="_blank"><i class="bi bi-instagram instagram-icon"></i></a>
+    </div>
+</div>
+
+
+<div class="noticias" *ngFor="let noticia of news">
+    <a [href]="noticia.url">
+        <h2 id="noticia-title">{{ noticia.title }}</h2>
+        <img [src]="noticia.urlToImage" id="noticia-img">
+    </a>
+    
+</div>
+

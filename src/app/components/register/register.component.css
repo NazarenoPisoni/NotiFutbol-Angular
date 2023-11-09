@@ -1,0 +1,29 @@
+.registration {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.form {
+    height: 100vh;
+    width: 50%;
+}
+
+#form-img {
+    height: 100vh;
+    padding: 2rem;
+    width: 50%;
+    color: white;
+    background: url("https://img.freepik.com/vector-gratis/fondo-patron-vibrante-lineas-diagonales_1017-12311.jpg?w=996&t=st=1699391136~exp=1699391736~hmac=228d18e38d1e37bf5918abef5dfbe1430f2c7e012b6bc17c81f89f78ad848b68");
+}
+
+.team-container {
+    cursor: pointer;
+    text-align: center;
+}
+
+.team-container.clicked {
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+}

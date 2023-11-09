@@ -1,0 +1,9 @@
+<h2>Top News</h2>
+<div *ngFor="let article of news.slice(0, 7)" class="noticias">
+    <div class="noticia">
+        <a [href]="article.url">
+            <img [src]="article.urlToImage" class="noticia-img">
+            <p>{{ article.title }}</p>
+        </a>
+    </div>
+</div>

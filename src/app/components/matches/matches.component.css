@@ -1,0 +1,45 @@
+.date-selector {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+
+.league-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.league-logo {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    margin-right: .2rem;
+}
+
+.matches {
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.match-info {
+    width: 100%;
+    display: flex;
+    margin-right: .3rem;
+    border: 1px solid black;
+}
+
+.match-teams {
+    width: 75%;
+}
+
+.match-result {
+    width: 25%;
+}
+
+.team-logo {
+    height: 2rem;
+    width: 2rem;
+}
+
