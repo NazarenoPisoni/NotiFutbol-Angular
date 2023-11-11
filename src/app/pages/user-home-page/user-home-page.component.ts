@@ -18,9 +18,11 @@ export class UserHomePageComponent {
   ngOnInit() {
     const userEmail = this.route.snapshot.paramMap.get('email');
 
-    if (userEmail !== null) {
+    /* if (userEmail !== null) {
       this.userRegistered = this.userService.getUser(userEmail);
     }
+   
+     */
 
     if (this.userRegistered) {
       console.log(this.userRegistered);

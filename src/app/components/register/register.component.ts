@@ -5,6 +5,7 @@ import { user } from 'src/app/models/user.model';
 import { TeamsService } from 'src/app/services/teams.service';
 import { UserService } from 'src/app/services/user.service';
 
+const serverURl = 'http://localhost:3000/users';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -33,6 +34,8 @@ export class RegisterComponent {
     favoriteTeamId: 0
   })
 
+  
+
   saveUser() {
     if(this.formulario.invalid) return;
 
@@ -47,11 +50,33 @@ export class RegisterComponent {
       
     }
 
-    this.userService.setUser(userRegistered);
-    alert('Registration Successful!');
+    /* this.userService.setUser(userRegistered);
+    alert('Registration Successful!'); */
+    /* aca iria un add product */
+
+    console.log(userRegistered);
+    ///aca me muestra el objeto bien tengo problemas al agregarlo
+  
+
+    /* this.userService.addUser(userRegistered, serverURl);
+    alert('Registration Successful!'); */
+
+    this.userService.addUser(userRegistered, serverURl).subscribe(
+
+      (response) => {
+         console.log("usuario registrado bien", response);
+      },
+      (error) => {
+        console.log("erorrrrr")
+      }
+    )
     
     this.router.navigate(['/user-home', userRegistered.email]);
     
+  }
+
+  getUsuarios(){
+    return this.userService.getUser();
   }
 
   searchTeamsByName() {
