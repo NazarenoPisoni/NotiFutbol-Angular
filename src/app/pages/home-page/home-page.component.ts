@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NewsService } from 'src/app/services/news.service';
+import { HighlightsService } from 'src/app/services/highlights.service';
 
 @Component({
   selector: 'app-home-page',
@@ -8,5 +8,18 @@ import { NewsService } from 'src/app/services/news.service';
 })
 export class HomePageComponent {
 
-  
+  highlights:  any[] = []
+
+  constructor(private highlightService : HighlightsService) {}
+
+  ngOnInit() {
+    this.highlightService.getHighlights()
+    .then((data) => {
+      this.highlights = data.response;
+      console.log(data.response);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  }
 }
