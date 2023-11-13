@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { user } from 'src/app/models/user.model';
@@ -11,8 +11,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-
-  users: user[] = [];
+  
   teams: any[] = [];
   searchQuery = '';
   selectedTeam: HTMLElement | null = null;
@@ -20,11 +19,10 @@ export class RegisterComponent {
   constructor(private fb : FormBuilder,
               private userService : UserService,
               private teamService : TeamsService,
-              private renderer: Renderer2,
               private router : Router) {}
 
   formulario: FormGroup = this.fb.group({
-    userId: 0,
+    id: this.userService.getNextId(),
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     dni: ['', Validators.minLength(8)],
@@ -37,7 +35,7 @@ export class RegisterComponent {
     if(this.formulario.invalid) return;
 
     const userRegistered : user = {
-      userId: this.formulario.controls['userId'].value,
+      id: this.formulario.controls['id'].value, 
       firstName: this.formulario.controls['firstName'].value,
       lastName: this.formulario.controls['lastName'].value,
       dni: this.formulario.controls['dni'].value,
@@ -46,12 +44,8 @@ export class RegisterComponent {
       favoriteTeamId: this.formulario.controls['favoriteTeamId'].value
       
     }
-
-    this.userService.setUser(userRegistered);
     alert('Registration Successful!');
-    
-    this.router.navigate(['/user-home', userRegistered.email]);
-    
+    this.userService.postUser(userRegistered);        
   }
 
   searchTeamsByName() {

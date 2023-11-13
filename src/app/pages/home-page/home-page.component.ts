@@ -8,7 +8,7 @@ import { HighlightsService } from 'src/app/services/highlights.service';
 })
 export class HomePageComponent {
 
-  highlights:  any[] = []
+  highlights:  any[] = [];
 
   constructor(private highlightService : HighlightsService) {}
 
@@ -21,5 +21,6 @@ export class HomePageComponent {
     .catch((error) => {
       console.log(error);
     })
+
   }
 }

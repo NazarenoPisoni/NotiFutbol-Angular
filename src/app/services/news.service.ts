@@ -26,7 +26,7 @@ export class NewsService {
   }
 
   getNewsByName(name: string) : Promise<any> {
-    const url = `https://newsapi.org/v2/everything?q=${name}&language=es&sortBy=publishedAt&apiKey=${this.apiKey}`;
+    const url = `https://newsapi.org/v2/everything?q=${name}&language=es&sortBy=popularity&apiKey=${this.apiKey}`;
 
     return this.http.get(url)
     .toPromise();

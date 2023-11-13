@@ -1,9 +1,9 @@
 <app-navbar></app-navbar>
 <div class="registration">
     <div class="form">
-        <h2>Create your Account</h2>
+        <h2>Edit your Account</h2>
 
-        <form (ngSubmit)="saveUser()" [formGroup]="formulario">
+        <form (ngSubmit)="editUser()" [formGroup]="formulario">
             <div class="form-group">
                 <label for="firstName"></label>First Name:
                 <input type="text" class="form-control" formControlName="firstName">
@@ -57,29 +57,7 @@
                 </span>
             </div>
 
-            <div>
-                <label for="favoriteTeamId"></label>Choose your favorite team
-                <input type="text" name="favoriteTeamId" placeholder="Search your team" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}">
-                <button type="button" (click)="searchTeamsByName()">Search</button>
-            </div>
-
-            <div *ngIf="teams.length > 0">
-                <div *ngFor="let team of teams.slice(0, 5)">
-                    <a (click)="selectTeam(team.team.id) ; changeColor($event)">
-                        <div class="team-container">
-                            <img [src]="team.team.logo" alt="Team Logo">
-                            <p><b>{{team.team.name}}</b></p>
-                            <p>{{team.team.country}}</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
-    <div id="form-img">
-        <h3>Join AppFootball today and never miss another goal</h3>
-    </div>
 </div>
-

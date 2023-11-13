@@ -52,4 +52,18 @@ export class TeamsService {
     .toPromise();
   }
 
+  getTeamById(id : number | undefined) : Promise<any> {
+    const apiUrl = `https://v3.football.api-sports.io/teams?id=${id}`;
+
+    const headers = new HttpHeaders({
+      'x-rapidapi-host': 'v3.football.api-sports.io',
+      'x-rapidapi-key': this.apiKey
+    });
+
+    const options = { headers: headers };
+
+    return this.http.get(apiUrl, options)
+    .toPromise();
+  }
+
 }

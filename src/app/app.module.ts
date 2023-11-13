@@ -20,6 +20,9 @@ import { MatchInfoComponent } from './components/match-info/match-info.component
 import { SearchComponent } from './components/search/search.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserHomePageComponent } from './pages/user-home-page/user-home-page.component';
+import { LoginComponent } from './components/login/login.component';
+import { EditUserComponent } from './pages/edit-user/edit-user.component';
+import { UserNavbarComponent } from './shared/user-navbar/user-navbar.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { UserHomePageComponent } from './pages/user-home-page/user-home-page.com
     SearchComponent,
     RegisterComponent,
     UserHomePageComponent,
+    LoginComponent,
+    EditUserComponent,
+    UserNavbarComponent,
   ],
   imports: [
     BrowserModule,
