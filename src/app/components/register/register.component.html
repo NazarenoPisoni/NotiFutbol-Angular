@@ -7,19 +7,35 @@
             <div class="form-group">
                 <label for="firstName"></label>First Name:
                 <input type="text" class="form-control" formControlName="firstName">
-                <span *ngIf="formulario.controls['firstName'].getError('required')
-                    && formulario.touched">
-                    This field is required 
-                </span>
+                <div>
+                    <span *ngIf="formulario.controls['firstName'].getError('required')
+                        && formulario.touched">
+                        This field is required 
+                    </span>
+                </div>
+                <div>
+                    <span *ngIf="formulario.controls['firstName'].getError('pattern')
+                        && formulario.touched">
+                        Only letters are allowed in the First Name 
+                    </span>
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="lastName"></label>Last Name:
                 <input type="text" class="form-control" formControlName="lastName">
-                <span *ngIf="formulario.controls['lastName'].getError('required')
-                    && formulario.touched">
-                    This field is required 
-                </span>
+                <div>
+                    <span *ngIf="formulario.controls['lastName'].getError('required')
+                        && formulario.touched">
+                        This field is required 
+                    </span>
+                </div>
+                <div>
+                    <span *ngIf="formulario.controls['lastName'].getError('pattern')
+                        && formulario.touched">
+                        Only letters are allowed in the Last Name 
+                    </span>
+                </div>
             </div>
 
             <div class="form-group">
@@ -42,19 +58,35 @@
             <div class="form-group">
                 <label for="email"></label>Email:
                 <input type="text" class="form-control" formControlName="email">
-                <span *ngIf="formulario.controls['email'].getError('required')
-                    && formulario.touched">
-                    This field is required 
-                </span>
+                <div>
+                    <span *ngIf="formulario.controls['email'].getError('required')
+                        && formulario.touched">
+                        This field is required 
+                    </span>
+                </div>
+                <div>
+                    <span *ngIf="formulario.controls['email'].getError('email')
+                        && formulario.touched">
+                        Please enter a valid email address 
+                    </span>
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="password"></label>Password:
                 <input type="password" class="form-control" formControlName="password">
-                <span *ngIf="formulario.controls['password'].getError('required')
-                    && formulario.touched">
-                    This field is required 
-                </span>
+                <div>
+                    <span *ngIf="formulario.controls['password'].getError('required')
+                        && formulario.touched">
+                        This field is required 
+                    </span>
+                </div>
+                <div>
+                    <span *ngIf="formulario.controls['password'].getError('pattern')
+                        && formulario.touched">
+                        Password must have at least 8 characters, one uppercase letter, and at least two numbers 
+                    </span>
+                </div>
             </div>
 
             <div>

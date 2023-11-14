@@ -11,7 +11,6 @@ import { PlayersComponent } from './components/players/players.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PlayersService } from './services/players.service';
 import { TeamsComponent } from './components/teams/teams.component';
-import { LeaguesByCountryComponent } from './components/leagues-by-country/leagues-by-country.component';
 import { MatchesComponent } from './components/matches/matches.component';
 import { NewsComponent } from './components/news/news.component';
 import { TeamInfoComponent } from './components/team-info/team-info.component';
@@ -23,6 +22,8 @@ import { UserHomePageComponent } from './pages/user-home-page/user-home-page.com
 import { LoginComponent } from './components/login/login.component';
 import { EditUserComponent } from './pages/edit-user/edit-user.component';
 import { UserNavbarComponent } from './shared/user-navbar/user-navbar.component';
+import { HighlightsComponent } from './components/highlights/highlights.component';
+import { LeagueInfoComponent } from './components/league-info/league-info.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,6 @@ import { UserNavbarComponent } from './shared/user-navbar/user-navbar.component'
     NavbarComponent,
     PlayersComponent,
     TeamsComponent,
-    LeaguesByCountryComponent,
     MatchesComponent,
     NewsComponent,
     TeamInfoComponent,
@@ -44,6 +44,8 @@ import { UserNavbarComponent } from './shared/user-navbar/user-navbar.component'
     LoginComponent,
     EditUserComponent,
     UserNavbarComponent,
+    HighlightsComponent,
+    LeagueInfoComponent,
   ],
   imports: [
     BrowserModule,

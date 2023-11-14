@@ -1,7 +1,4 @@
 <app-navbar></app-navbar>
 <app-news></app-news>
+<app-highlights></app-highlights>
 
-<div *ngFor="let h of highlights.slice(0, 3)">
-    <p>{{h.title}}</p>
-    <div [innerHTML]="h.videos[0]?.embed" class="highlights"></div>
-</div>

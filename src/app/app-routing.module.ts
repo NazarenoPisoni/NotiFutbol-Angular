@@ -15,9 +15,11 @@ import { LoginComponent } from './components/login/login.component';
 import { EditUserComponent } from './pages/edit-user/edit-user.component';
 import { AuthGuard } from './guards/auth-guard';
 import { LoginGuard } from './guards/login-guard';
+import { LeagueInfoComponent } from './components/league-info/league-info.component';
 
 const routes: Routes = [
   {path: 'leagues', component: LeaguesComponent},
+  {path: 'league/:id', component: LeagueInfoComponent},
   {path: 'home', component: HomePageComponent},
   {path: 'players', component: PlayersComponent},
   {path: 'player/:id', component: PlayerInfoComponent},

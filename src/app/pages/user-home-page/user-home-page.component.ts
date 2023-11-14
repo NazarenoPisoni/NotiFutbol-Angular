@@ -16,10 +16,11 @@ export class UserHomePageComponent {
               private newsService : NewsService) {}
 
   team: any[] = [];
-  teamName: any = '';
+  teamName: string = '';
   news: any[] = [];             
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.getTeam();
     this.getNewsByTeam();
   } 
   
@@ -27,21 +28,20 @@ export class UserHomePageComponent {
     return this.userService.currentUser;
   }
 
-  getTeam() {
-    this.teamService.getTeamById(this.getUser?.favoriteTeamId)
-    .then((data) => {
+  async getTeam() {
+    try {
+      const data = await this.teamService.getTeamById(this.getUser?.favoriteTeamId);
       this.team = data.response;
-      this.teamName = data.response.team.name;
-    })
-    .catch((error) => {
+      this.teamName = data.response[0].team.name;
+    } catch (error) {
       console.log(error);
-    })
+    }
   }
 
   getNewsByTeam() {
     this.newsService.getNewsByName(this.teamName)
     .then((data) => {
-      console.log(data.articles);
+      this.news = data.articles;
     })
     .catch((error) => {
       console.log(error);

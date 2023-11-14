@@ -23,11 +23,11 @@ export class RegisterComponent {
 
   formulario: FormGroup = this.fb.group({
     id: this.userService.getNextId(),
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
+    firstName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]],
+    lastName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]],
     dni: ['', Validators.minLength(8)],
-    email: ['', Validators.required],
-    password: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d.*\d)[A-Za-z\d]{8,}$/)]],
     favoriteTeamId: 0
   })
 

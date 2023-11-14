@@ -12,12 +12,14 @@ export class LeaguesService {
   constructor(private http : HttpClient) { }
 
   getLeaguesByCountry(country : string) : Promise<any>{
-    return this.http.get(`${this.apiUrl}/leagues?country=${country}`)
-    .toPromise();
-  }
+    const headers = new HttpHeaders({
+      'x-rapidapi-host': 'v3.football.api-sports.io',
+      'x-rapidapi-key': this.apiKey
+    });
 
-  getAllLeaguesByCountry() : Promise<any>{
-    return this.http.get(`${this.apiUrl}/leagues`)
+    const options = { headers: headers };
+
+    return this.http.get(`${this.apiUrl}/leagues?country=${country}`, options)
     .toPromise();
   }
 
@@ -30,6 +32,18 @@ export class LeaguesService {
     const options = { headers: headers };
 
     return this.http.get(`${this.apiUrl}/leagues?search=${name}`, options)
+    .toPromise();
+  }
+
+  getLeagueById(id : number) : Promise<any> {
+    const headers = new HttpHeaders({
+      'x-rapidapi-host': 'v3.football.api-sports.io',
+      'x-rapidapi-key': this.apiKey
+    });
+
+    const options = { headers: headers };
+
+    return this.http.get(`${this.apiUrl}/leagues?id=${id}`, options)
     .toPromise();
   }
 }
