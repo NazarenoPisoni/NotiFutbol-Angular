@@ -1,0 +1,42 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-left {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.navbar-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.navbar-left a {
+    text-decoration: none;
+    color: black;
+    margin-right: 40px;
+}
+
+.navbar-right a {
+    text-decoration: none;
+    color: black;
+    margin-right: 40px;
+}
+
+.bi-search {
+    font-size: 1.5rem;
+}
+
+.bi-person {
+    font-size: 2rem;
+}
+
+.logout {
+    cursor: pointer;
+    border: 1px solid black;
+    padding: 1rem;
+}

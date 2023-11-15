@@ -1,0 +1,35 @@
+.title {
+    margin-top: 2rem;
+}
+
+input {
+    margin-top: 1rem;
+}
+
+.search-results {
+    margin-top: 2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.player-info {
+    border: 1px solid rgb(231, 227, 227);
+    margin-top: 2rem;
+    height: 20vh;
+}
+
+.player-info a {
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+
+.player-img {
+    width: 100%;
+}
+

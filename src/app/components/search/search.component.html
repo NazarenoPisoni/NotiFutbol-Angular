@@ -1,0 +1,55 @@
+<app-navbar></app-navbar>
+<h1>Search</h1>
+<form (ngSubmit)="searchAllByName()">
+    <input type="text" name="searchQuery" [(ngModel)]="searchQuery"  placeholder="Write something..."><br>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+<p>Search for teams and competitions.</p>
+
+<div class="grid">
+    <div>
+        <h2>Teams</h2>
+        <div *ngIf="teams && teams.length > 0">
+            <div *ngFor="let team of teams.slice(0, 5)" class="item">
+                <img [src]="team.team.logo" class="item-img">
+                <p>{{team.team.name}}</p>
+            </div>
+        </div>
+    </div>
+    
+    <div>
+        <h2>Competitions</h2>
+        <div *ngIf="leagues && leagues.length > 0">
+            <div *ngFor="let league of leagues.slice(0, 5)" class="item">
+                <img [src]="league.league.logo" class="item-img">
+                <p>{{league.league.name}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h2>Players</h2>
+        <div *ngIf="players && players.length > 0">
+            <div *ngFor="let player of players.slice(0, 5)" class="item">
+                <img *ngIf="player.strCutout" [src]="player.strCutout" class="item-img">
+                <img *ngIf="!player.strCutout" src="https://image-service.onefootball.com/transform?w=32&h=32&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Fplayers%252F180%252F439285.jpg" class="item-img">
+                <span>{{player.strPlayer}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<h2 class="top-news">Top News</h2>
+<div class="other-news">
+    <div *ngFor="let article of news.slice(0, 8)">
+        <div class="noticia">
+            <a [href]="article.url">
+                <img [src]="article.urlToImage" class="noticia-img">
+                <p class="noticia-title">{{ article.title }}</p>
+            </a>
+        </div>
+    </div>
+</div>
+

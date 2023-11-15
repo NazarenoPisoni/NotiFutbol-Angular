@@ -1,0 +1,63 @@
+<app-navbar></app-navbar>
+<div class="registration">
+    <div class="form">
+        <h2>Edit your Account</h2>
+
+        <form (ngSubmit)="editUser()" [formGroup]="formulario">
+            <div class="form-group">
+                <label for="firstName"></label>First Name:
+                <input type="text" class="form-control" formControlName="firstName">
+                <span *ngIf="formulario.controls['firstName'].getError('required')
+                    && formulario.touched">
+                    This field is required 
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName"></label>Last Name:
+                <input type="text" class="form-control" formControlName="lastName">
+                <span *ngIf="formulario.controls['lastName'].getError('required')
+                    && formulario.touched">
+                    This field is required 
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="dni"></label>DNI:
+                <input type="text" class="form-control" formControlName="dni">
+                <div>
+                    <span *ngIf="formulario.controls['dni'].getError('required')
+                        && formulario.touched">
+                        This field is required 
+                    </span>
+                </div>
+                <div>
+                    <span *ngIf="formulario.controls['dni'].getError('minlength')
+                        && formulario.touched">
+                        DNI must have at least 8 numbers 
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email"></label>Email:
+                <input type="text" class="form-control" formControlName="email">
+                <span *ngIf="formulario.controls['email'].getError('required')
+                    && formulario.touched">
+                    This field is required 
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="password"></label>Password:
+                <input type="password" class="form-control" formControlName="password">
+                <span *ngIf="formulario.controls['password'].getError('required')
+                    && formulario.touched">
+                    This field is required 
+                </span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</div>

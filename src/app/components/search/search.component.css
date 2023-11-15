@@ -1,0 +1,66 @@
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+input {
+    height: 2.5rem;
+    width: 40%;
+}
+
+p {
+    margin-top: 2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.item {
+    margin-top: 1rem;
+}
+
+.item-img {
+    height: 5rem;
+    width: 5rem;
+}
+
+hr {
+    border: 1px solid rgb(206, 200, 200);
+}
+
+.top-news {
+    margin-top: 2rem;
+}
+
+.other-news {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.noticia {
+    height: 40vh;
+}
+
+.noticia a {
+    text-decoration: none;
+    color: black;
+}
+
+.noticia-img {
+    height: 70%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: .5rem;
+}
+
+.noticia-title {
+    font-weight: bold;
+    margin-top: 0;
+}

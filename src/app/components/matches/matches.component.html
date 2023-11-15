@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+<div class="date-selector">
+    <button (click)="getMatchesYesterday()" class="btn btn-primary">Yesterday</button>
+    <button (click)="getMatchesToday()" class="btn btn-primary">Today</button>
+    <button (click)="getMatchesTomorrow()" class="btn btn-primary">Tomorrow</button>
+</div>
+
+<h2>{{ headerText }}</h2>
+<div *ngFor="let leagueName of leagueNames">
+    <div>
+        <div class="league-info">
+            <img [src]="leagueName.logo" alt="League Logo" class="league-logo">            
+            <h3>{{ leagueName.name }}</h3>    
+        </div>
+        <div class="grid">
+            <div *ngFor="let match of groupedMatches[leagueName.name]" class="matches">
+                <a [routerLink]="['/match', match.fixture.id]">
+                    <div class="match-info">
+                        <div class="match-teams">
+                            <p><img [src]="match.teams.home.logo" class="team-logo"><span>{{ match.teams.home.name }}</span></p>
+                            <p><img [src]="match.teams.away.logo" class="team-logo"><span>{{ match.teams.away.name }}</span></p>
+                        </div>
+                        <div class="match-result">
+                            <p>{{ match.goals.home }}</p>
+                            <p>{{ match.goals.away }}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>  

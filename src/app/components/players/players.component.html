@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+<div>
+    <h2 class="title">Search Player</h2>
+
+    <form (submit)="searchPlayers()">
+        <input type="text" name="searchQuery" [(ngModel)]="searchQuery" placeholder="Player name"><br>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <div *ngIf="players.length > 0" class="search-results">
+        <h2>Search results: </h2>
+        <div class="grid">
+            <div *ngFor="let player of players.slice(0, 4)">
+                <div class="player-info">
+                    <a [routerLink]="['/player', player.strPlayer]">
+                        <h3>{{ player.strPlayer }}</h3>
+                        <img [src]="player.strThumb" *ngIf="player.strThumb" class="player-img">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

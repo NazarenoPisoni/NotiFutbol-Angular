@@ -1,0 +1,14 @@
+h2 {
+    margin-top: 2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+img {
+    height: 5rem;
+    width: 5rem;
+}

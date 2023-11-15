@@ -1,0 +1,16 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+
+html {
+    box-sizing: border-box;
+    margin: 1rem 8rem;
+}
+
+*, *:after, *:before {
+    box-sizing: inherit;
+}
+
+button {
+    margin-top: 1rem;
+}
