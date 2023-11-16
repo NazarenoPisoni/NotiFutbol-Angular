@@ -17,7 +17,8 @@ export class UserHomePageComponent {
 
   team: any[] = [];
   teamName: string = '';
-  news: any[] = [];             
+  mainNews: any;
+  otherNews: any[] = [];            
 
   async ngOnInit() {
     await this.getTeam();
@@ -41,7 +42,9 @@ export class UserHomePageComponent {
   getNewsByTeam() {
     this.newsService.getNewsByName(this.teamName)
     .then((data) => {
-      this.news = data.articles;
+      const articles = data.articles;
+      this.mainNews = articles[0];
+      this.otherNews = articles.slice(1);
     })
     .catch((error) => {
       console.log(error);

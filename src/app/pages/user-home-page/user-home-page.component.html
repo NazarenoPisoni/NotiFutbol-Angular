@@ -2,12 +2,23 @@
 <h1>Welcome {{getUser?.firstName}}!</h1>
 
 <h2>Top News</h2>
-<div *ngFor="let article of news.slice(0, 7)" class="noticias">
-    <div class="noticia">
-        <a [href]="article.url">
-            <img [src]="article.urlToImage" class="noticia-img">
-            <p>{{ article.title }}</p>
-        </a>
+<div>
+    <a [href]="mainNews.url" class="main-news">
+        <img [src]="mainNews.urlToImage" class="main-news-img">
+        <div class="main-news-text">
+            <p class="main-news-title">{{ mainNews.title }}</p>
+            <p>{{mainNews.description}}</p>
+        </div>
+    </a>
+</div>
+<div class="other-news">
+    <div *ngFor="let article of otherNews.slice(0, 12)">
+        <div class="noticia">
+            <a [href]="article.url">
+                <img [src]="article.urlToImage" class="noticia-img">
+                <p class="noticia-title">{{ article.title }}</p>
+            </a>
+        </div>
     </div>
 </div>
 
