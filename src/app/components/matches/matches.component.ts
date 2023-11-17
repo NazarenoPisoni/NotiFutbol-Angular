@@ -57,7 +57,7 @@ export class MatchesComponent {
     const today = this.getCurrentDate();
     this.getMatchesByDate(today);
 
-    this.headerText = "Today's Matches";
+    this.headerText = "Partidos de hoy";
   }
 
   getMatchesYesterday() {
@@ -65,7 +65,7 @@ export class MatchesComponent {
     yesterday.setDate(yesterday.getDate() - 1);
     this.getMatchesByDate(this.formatDate(yesterday));
 
-    this.headerText = "Yesterday's Matches";
+    this.headerText = "Partidos de ayer";
   }
 
   getMatchesTomorrow() {
@@ -73,7 +73,7 @@ export class MatchesComponent {
     tomorrow.setDate(tomorrow.getDate() + 1);
     this.getMatchesByDate(this.formatDate(tomorrow));
 
-    this.headerText = "Tomorrow's Matches";
+    this.headerText = "Partidos de mañana";
   }
 
   formatDate(date : Date): string {

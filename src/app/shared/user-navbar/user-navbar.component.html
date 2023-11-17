@@ -1,14 +1,14 @@
 <div class="navbar">
     <div class="navbar-left">
-        <a routerLink="/home">Home</a>
-        <a routerLink="/matches">Matches</a>
-        <a routerLink="/players">Players</a>
-        <a routerLink="/teams">Teams</a>
-        <a routerLink="/leagues">Leagues</a>
+        <a routerLink="/home">Inicio</a>
+        <a routerLink="/matches">Partidos</a>
+        <a routerLink="/players">Jugadores</a>
+        <a routerLink="/teams">Equipos</a>
+        <a routerLink="/leagues">Competiciones</a>
     </div>
     <div class="navbar-right">
         <a routerLink="/search"><i class="bi bi-search"></i></a>
         <a [routerLink]="['/edit', user?.id]"><i class="bi bi-person"></i></a>
-        <a (click)="onLogout()" class="logout">SIGN OUT</a>
+        <a (click)="onLogout()" class="logout">CERRAR SESION</a>
     </div>
 </div>

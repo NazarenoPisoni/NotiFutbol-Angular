@@ -28,7 +28,7 @@ export class LoginComponent {
     )
 
     if(!this.userService.currentUser) {
-      this.errorMessage = 'Invalid email or password';
+      this.errorMessage = 'Email o contraseña inválidos';
     }
   }
 }

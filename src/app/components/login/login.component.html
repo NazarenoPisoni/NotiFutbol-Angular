@@ -1,34 +1,36 @@
 <app-navbar></app-navbar>
-<hr>
-<h2>Login</h2>
-<form (ngSubmit)="autenticateUser()" [formGroup]="formulario">
-    <div class="form-group">
-        <label for="email">Email: </label>
-        <input type="email" class="form-control" formControlName="email">
-        <div>
-            <span *ngIf="formulario.controls['email'].getError('required')
-                && formulario.touched">
-                This field is required 
-            </span>
-        </div>
-        <div>
-            <span *ngIf="formulario.controls['email'].getError('email')
-                && formulario.touched">
-                Please enter a valid email address 
-            </span>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="password">Password: </label>
-        <input type="password" class="form-control" formControlName="password">
-        <span *ngIf="formulario.controls['password'].getError('required')
+<body>
+    <hr>
+    <h2>Iniciar sesión</h2>
+    <form (ngSubmit)="autenticateUser()" [formGroup]="formulario">
+        <div class="form-group">
+            <label for="email">Email: </label>
+            <input type="email" class="form-control" formControlName="email">
+            <div>
+                <span *ngIf="formulario.controls['email'].getError('required')
                     && formulario.touched">
-                    This field is required 
-        </span>
-    </div>
+                    Este campo es requerido 
+                </span>
+            </div>
+            <div>
+                <span *ngIf="formulario.controls['email'].getError('email')
+                    && formulario.touched">
+                    Por favor ingrese un email válido 
+                </span>
+            </div>
+        </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-group">
+            <label for="password">Password: </label>
+            <input type="password" class="form-control" formControlName="password">
+            <span *ngIf="formulario.controls['password'].getError('required')
+                        && formulario.touched">
+                        Este campo es requerido 
+            </span>
+        </div>
 
-    <span id="error">{{ errorMessage }}</span>
-</form>
+        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+
+        <span id="error">{{ errorMessage }}</span>
+    </form>
+</body>

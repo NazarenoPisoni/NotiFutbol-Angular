@@ -1,127 +1,132 @@
 <app-navbar></app-navbar>
-<div class="registration">
-    <div class="form">
-        <h2>Create your Account</h2>
 
-        <form (ngSubmit)="saveUser()" [formGroup]="formulario">
-            <div class="form-group">
-                <label for="firstName">First Name:</label>
-                <input type="text" class="form-control" formControlName="firstName">
-                <div>
-                    <span *ngIf="formulario.controls['firstName'].getError('required')
-                        && formulario.touched">
-                        This field is required 
-                    </span>
+<body>
+    <div class="registration">
+        <div class="form">
+            <h2>Crea tu cuenta</h2>
+    
+            <form (ngSubmit)="saveUser()" [formGroup]="formulario">
+                <div class="form-group">
+                    <label for="firstName">Nombre:</label>
+                    <input type="text" class="form-control" formControlName="firstName">
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['firstName'].getError('required')
+                            && formulario.touched">
+                            Este campo es requerido 
+                        </span>
+                    </div>
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['firstName'].getError('pattern')
+                            && formulario.touched">
+                            Solo se permiten letras en el Nombre 
+                        </span>
+                    </div>
                 </div>
-                <div>
-                    <span *ngIf="formulario.controls['firstName'].getError('pattern')
-                        && formulario.touched">
-                        Only letters are allowed in the First Name 
-                    </span>
+    
+                <div class="form-group">
+                    <label for="lastName">Apellido:</label>
+                    <input type="text" class="form-control" formControlName="lastName">
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['lastName'].getError('required')
+                            && formulario.touched">
+                            Este campo es requerido 
+                        </span>
+                    </div>
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['lastName'].getError('pattern')
+                            && formulario.touched">
+                            Solo se permiten letras en el Apellido 
+                        </span>
+                    </div>
                 </div>
-            </div>
-
-            <div class="form-group">
-                <label for="lastName">Last Name:</label>
-                <input type="text" class="form-control" formControlName="lastName">
-                <div>
-                    <span *ngIf="formulario.controls['lastName'].getError('required')
-                        && formulario.touched">
-                        This field is required 
-                    </span>
+    
+                <div class="form-group">
+                    <label for="dni">DNI:</label>
+                    <input type="text" class="form-control" formControlName="dni">
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['dni'].getError('required')
+                            && formulario.touched">
+                            Este campo es requerido 
+                        </span>
+                    </div>
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['dni'].getError('minlength')
+                            && formulario.touched">
+                            El DNI debe tener 8 números 
+                        </span>
+                    </div>
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['dni'].getError('pattern')
+                            && formulario.touched">
+                            Solo se permiten números en el DNI  
+                        </span>
+                    </div>
                 </div>
-                <div>
-                    <span *ngIf="formulario.controls['lastName'].getError('pattern')
-                        && formulario.touched">
-                        Only letters are allowed in the Last Name 
-                    </span>
+    
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="text" class="form-control" formControlName="email">
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['email'].getError('required')
+                            && formulario.touched">
+                            Este campo es requerido  
+                        </span>
+                    </div>
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['email'].getError('email')
+                            && formulario.touched">
+                            Por favor ingrese un email válido  
+                        </span>
+                    </div>
                 </div>
-            </div>
-
-            <div class="form-group">
-                <label for="dni">DNI:</label>
-                <input type="text" class="form-control" formControlName="dni">
-                <div>
-                    <span *ngIf="formulario.controls['dni'].getError('required')
-                        && formulario.touched">
-                        This field is required 
-                    </span>
+    
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" class="form-control" formControlName="password">
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['password'].getError('required')
+                            && formulario.touched">
+                            Este campo es requerido  
+                        </span>
+                    </div>
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['password'].getError('pattern')
+                            && formulario.touched">
+                            La contraseña debe tener entre 8 y 12 caracteres, una letra mayúscula, y dos números como mínimo 
+                        </span>
+                    </div>
                 </div>
-                <div>
-                    <span *ngIf="formulario.controls['dni'].getError('minlength')
-                        && formulario.touched">
-                        DNI must have at least 8 numbers 
-                    </span>
+    
+                <div id="favorite-team">
+                    <label for="favoriteTeamId">Elige tu equipo favorito</label><br>
+                    <input type="text" name="favoriteTeamId" placeholder="Search your team" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}">
+                    <button type="button" (click)="searchTeamsByName()">Buscar</button>
                 </div>
-                <div>
-                    <span *ngIf="formulario.controls['dni'].getError('pattern')
-                        && formulario.touched">
-                        Only numbers are allowed in the DNI 
-                    </span>
+    
+                <div *ngIf="teams.length > 0">
+                    <div *ngFor="let team of teams.slice(0, 5)">
+                        <a (click)="selectTeam(team.team.id) ; changeColor($event)">
+                            <div class="team-container">
+                                <img [src]="team.team.logo" alt="Team Logo">
+                                <p><b>{{team.team.name}}</b></p>
+                                <p>{{team.team.country}}</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </div>
-
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="text" class="form-control" formControlName="email">
-                <div>
-                    <span *ngIf="formulario.controls['email'].getError('required')
-                        && formulario.touched">
-                        This field is required 
-                    </span>
-                </div>
-                <div>
-                    <span *ngIf="formulario.controls['email'].getError('email')
-                        && formulario.touched">
-                        Please enter a valid email address 
-                    </span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" class="form-control" formControlName="password">
-                <div>
-                    <span *ngIf="formulario.controls['password'].getError('required')
-                        && formulario.touched">
-                        This field is required 
-                    </span>
-                </div>
-                <div>
-                    <span *ngIf="formulario.controls['password'].getError('pattern')
-                        && formulario.touched">
-                        Password must have at least 8 characters, one uppercase letter, and at least two numbers 
-                    </span>
-                </div>
-            </div>
-
-            <div id="favorite-team">
-                <label for="favoriteTeamId">Choose your favorite team</label><br>
-                <input type="text" name="favoriteTeamId" placeholder="Search your team" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}">
-                <button type="button" (click)="searchTeamsByName()">Search</button>
-            </div>
-
-            <div *ngIf="teams.length > 0">
-                <div *ngFor="let team of teams.slice(0, 5)">
-                    <a (click)="selectTeam(team.team.id) ; changeColor($event)">
-                        <div class="team-container">
-                            <img [src]="team.team.logo" alt="Team Logo">
-                            <p><b>{{team.team.name}}</b></p>
-                            <p>{{team.team.country}}</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <button type="submit" class="submit btn btn-primary">Submit</button>
-        </form>
+    
+                <button type="submit" class="submit btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div id="form-img">
+            <h3>Unete hoy a NotiFútbol y nunca te pierdas ningún gol</h3>
+            <h3>Lee noticias sobre tu equipo favorito</h3>
+            <h3>Mira los resumenes de los últimos partidos jugados</h3>
+            <h3>Encuentra los resultados de los partidos</h3>
+            <h3>Busca información sobre cualquier jugador</h3>
+        </div>
     </div>
-    <div id="form-img">
-        <h3>Join AppFootball today and never miss another goal</h3>
-        <h3>Read news about your favorite team</h3>
-        <h3>Watch the highlights of the best matches</h3>
-        <h3>Find the matches results</h3>
-        <h3>Search information about any player</h3>
-    </div>
-</div>
+</body>
+
+
 

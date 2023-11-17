@@ -26,8 +26,12 @@ export class TeamsComponent {
     countries.forEach((country) => {
       this.teamService.getTeamsByCountry(country)
       .then((data) => {
-        this.teams = this.teams.concat(data.response);
-        console.log(data);
+        const teams = data.response;
+        teams.forEach((team: any) => {
+          if(this.isImportantTeam(team.team.name)) {
+            this.teams = this.teams.concat(team);
+          }
+        })
       })
       .catch((error) => {
         console.log(error);

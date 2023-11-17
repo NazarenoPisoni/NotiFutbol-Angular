@@ -1,9 +1,11 @@
-
-<h2>Best highlights</h2>
-<div class="highlights">
-    <div *ngFor="let h of highlights.slice(0, 8)">
-        <div [innerHTML]="h.videos[0]?.embed"></div>
-        <p class="highlight-title">{{h.title}}</p>
+<body>
+    <h2>Ultimos resumenes</h2>
+    <div class="highlights">
+        <div *ngFor="let h of highlights.slice(0, 8)">
+            <div [innerHTML]="h.videos[0]?.embed"></div>
+            <p class="highlight-title">{{h.title}}</p>
+        </div>
     </div>
-</div>
+</body>
+
 

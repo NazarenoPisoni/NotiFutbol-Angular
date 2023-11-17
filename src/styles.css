@@ -4,7 +4,7 @@
 
 html {
     box-sizing: border-box;
-    margin: 1rem 8rem;
+    margin: 0;
 }
 
 *, *:after, *:before {
@@ -14,3 +14,5 @@ html {
 button {
     margin-top: 1rem;
 }
+
+

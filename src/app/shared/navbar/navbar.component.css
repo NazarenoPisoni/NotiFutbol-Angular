@@ -2,6 +2,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: rgb(10, 203, 10);
+    padding-left: 4rem;
+    padding-right: 4rem;    
 }
 
 .navbar-left {
@@ -17,13 +20,13 @@
 
 .navbar-left a {
     text-decoration: none;
-    color: black;
+    color: white;
     margin-right: 40px;
 }
 
 .navbar-right a {
     text-decoration: none;
-    color: black;
+    color: white;
     margin-right: 40px;
 }
 
@@ -31,12 +34,12 @@
     font-size: 1.5rem;
 }
 
-#sign-in-button {
+#join-button {
     border: 1px solid black;
     padding: 1rem;
 }
 
-#join-button {
+#sign-in-button {
     background-color: black;
     color: white;
     padding: 1rem;

@@ -1,7 +1,16 @@
+body {
+    width: 90%;
+    margin: 0 auto;
+}
+
 .date-selector {
     display: flex;
     justify-content: space-around;
     width: 50%;
+}
+
+.btn-info {
+    color: white;
 }
 
 h2 {

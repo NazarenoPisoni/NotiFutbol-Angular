@@ -2,27 +2,27 @@
 
 <hr>
 
-<p>PLAYER</p>
+<p>JUGADOR</p>
 <div *ngFor="let p of player">
     <img [src]="p.strCutout" id="player-img"><span id="player-title">{{ p.strPlayer }}</span>
 
     <div class="player-info">
         <div id="player-stats">
-            <p><b>KEY STATS</b></p>
-            <p>Nationality: {{ p.strNationality}}</p>
-            <p>Team: {{ p.strTeam}}</p>
-            <p>Position: {{ p.strPosition}}</p>
-            <p>Player Number: {{ p.strNumber}}</p>
-            <p>Date of Born: {{ p.dateBorn}}</p>
-            <p>Birth Location: {{ p.strBirthLocation}}</p>
-            <p>Status: {{ p.strStatus}}</p>
+            <p><b>INFORMACION DEL JUGADOR</b></p>
+            <p>Nacionalidad: {{ p.strNationality}}</p>
+            <p>Equipo: {{ p.strTeam}}</p>
+            <p>Posición: {{ p.strPosition}}</p>
+            <p>Número de jugador: {{ p.strNumber}}</p>
+            <p>Fecha de nacimiento: {{ p.dateBorn}}</p>
+            <p>Lugar de nacimiento: {{ p.strBirthLocation}}</p>
+            <p>Estado: {{ p.strStatus}}</p>
             <a [href]="'https://' + p.strFacebook" target="_blank"><i class="bi bi-facebook facebook-icon"></i></a>
             <a [href]="'https://' + p.strTwitter" target="_blank"><i class="bi bi-twitter twitter-icon"></i></a>
             <a [href]="'https://' + p.strInstagram" target="_blank"><i class="bi bi-instagram instagram-icon"></i></a>
         </div>
     
         <div id="player-photos">
-            <p><b>GALLERY OF PHOTOS</b></p>
+            <p><b>GALERIA DE IMAGENES</b></p>
             <div id="photos">
                 <div>
                     <a [href]="p.strFanart1"><img [src]="p.strFanart1"></a>
@@ -43,7 +43,7 @@
 
 <hr>
 
-<h2 class="top-news">Top News</h2>
+<h2 class="top-news">Noticias relacionadas</h2>
 <div class="other-news">
     <div *ngFor="let article of news.slice(0, 8)">
         <div class="noticia">
