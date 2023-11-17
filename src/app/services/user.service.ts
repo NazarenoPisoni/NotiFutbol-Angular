@@ -109,4 +109,12 @@ export class UserService {
     this.user = undefined;
     localStorage.clear();
   }
+
+  checkIfDniOrEmailExists(value: string, field: string): Observable<boolean> {
+    const queryParams = `?${field}=${encodeURIComponent(value)}`;
+    return this.http.get<any[]>(`${this.url}${queryParams}`).pipe(
+      map(users => users.length > 0),
+      catchError(() => of(false))
+    );
+  }
 }

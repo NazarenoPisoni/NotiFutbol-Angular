@@ -61,6 +61,11 @@
                             Solo se permiten números en el DNI  
                         </span>
                     </div>
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['dni'].getError('exists')">
+                            Este DNI ya está registrado   
+                        </span>
+                    </div>
                 </div>
     
                 <div class="form-group">
@@ -76,6 +81,11 @@
                         <span class="error" *ngIf="formulario.controls['email'].getError('email')
                             && formulario.touched">
                             Por favor ingrese un email válido  
+                        </span>
+                    </div>
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['email'].getError('exists')">
+                            Este email ya está registrado   
                         </span>
                     </div>
                 </div>
