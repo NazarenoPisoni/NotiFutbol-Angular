@@ -1,2 +1,12 @@
 <app-navbar></app-navbar>
-<app-leagues-by-country></app-leagues-by-country>
+<div>
+    <h2>Most followed leagues</h2>
+    <div *ngFor="let league of leagues">
+        <div *ngIf="isImportantLeague(league.league.name)">
+            <a [routerLink]="['/league', league.league.id]">
+                <img [src]="league.league.logo" alt="Team Logo">
+                <p>{{ league.league.name }}</p>
+            </a>
+        </div>
+    </div>
+</div>

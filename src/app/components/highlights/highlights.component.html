@@ -1,0 +1,6 @@
+
+<h2>Best highlights</h2>
+<div *ngFor="let h of highlights.slice(0, 8)">
+    <p>{{h.title}}</p>
+    <div [innerHTML]="h.videos[0]?.embed" class="highlights"></div>
+</div>

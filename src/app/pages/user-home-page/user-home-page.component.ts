@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { user } from 'src/app/models/user.model';
+import { NewsService } from 'src/app/services/news.service';
+import { TeamsService } from 'src/app/services/teams.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,20 +11,40 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserHomePageComponent {
 
-  userRegistered: user | null = null;
-
   constructor(private userService : UserService,
-              private route : ActivatedRoute) {}
+              private teamService : TeamsService,
+              private newsService : NewsService) {}
 
-  ngOnInit() {
-    const userEmail = this.route.snapshot.paramMap.get('email');
+  team: any[] = [];
+  teamName: string = '';
+  news: any[] = [];             
 
-    if (userEmail !== null) {
-      this.userRegistered = this.userService.getUser(userEmail);
+  async ngOnInit() {
+    await this.getTeam();
+    this.getNewsByTeam();
+  } 
+  
+  get getUser(): user | undefined {
+    return this.userService.currentUser;
+  }
+
+  async getTeam() {
+    try {
+      const data = await this.teamService.getTeamById(this.getUser?.favoriteTeamId);
+      this.team = data.response;
+      this.teamName = data.response[0].team.name;
+    } catch (error) {
+      console.log(error);
     }
+  }
 
-    if (this.userRegistered) {
-      console.log(this.userRegistered);
-    }
-  }            
+  getNewsByTeam() {
+    this.newsService.getNewsByName(this.teamName)
+    .then((data) => {
+      this.news = data.articles;
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  }
 }

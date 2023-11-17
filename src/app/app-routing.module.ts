@@ -11,9 +11,15 @@ import { MatchInfoComponent } from './components/match-info/match-info.component
 import { SearchComponent } from './components/search/search.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserHomePageComponent } from './pages/user-home-page/user-home-page.component';
+import { LoginComponent } from './components/login/login.component';
+import { EditUserComponent } from './pages/edit-user/edit-user.component';
+import { AuthGuard } from './guards/auth-guard';
+import { LoginGuard } from './guards/login-guard';
+import { LeagueInfoComponent } from './components/league-info/league-info.component';
 
 const routes: Routes = [
   {path: 'leagues', component: LeaguesComponent},
+  {path: 'league/:id', component: LeagueInfoComponent},
   {path: 'home', component: HomePageComponent},
   {path: 'players', component: PlayersComponent},
   {path: 'player/:id', component: PlayerInfoComponent},
@@ -22,7 +28,9 @@ const routes: Routes = [
   {path: 'match/:id', component: MatchInfoComponent},
   {path: 'search', component: SearchComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'user-home/:email', component: UserHomePageComponent},
+  {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
+  {path: 'edit/:id', component: EditUserComponent},
+  {path: 'user-home', component: UserHomePageComponent, canActivate: [AuthGuard]},
   {path: '**', redirectTo: 'home'}
 ];
 
@@ -31,5 +39,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
-/* AGREGE ESTE CAMBIO PARA VER QUE FUNCIONE EN GIT HUB */

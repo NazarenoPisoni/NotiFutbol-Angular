@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": 2,
+      "firstName": "Nazareno",
+      "lastName": "Pisoni",
+      "dni": "35893486",
+      "email": "messimdq@gmail.com",
+      "password": "Naza91",
+      "favoriteTeamId": 435
+    },
+    {
+      "id": 1,
+      "firstName": "Diego",
+      "lastName": "Fernandez",
+      "dni": "22222222",
+      "email": "diego@gmail.com",
+      "password": "Diego1234",
+      "favoriteTeamId": 451
+    }
+  ]
+}
