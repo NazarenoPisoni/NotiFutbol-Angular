@@ -35,13 +35,14 @@ export class RegisterComponent {
       updateOn: 'blur'
     }],
     password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d.*\d)[A-Za-z\d]{8,}$/)]],
+    confirmPassword: ['', Validators.required],
     favoriteTeamId: 0
   })
 
   
 
   saveUser() {
-    if(this.formulario.invalid) return;
+    if(this.formulario.invalid || !this.passwordMatch) return;
 
     const userRegistered : user = {
       id: this.formulario.controls['id'].value, 
@@ -88,6 +89,12 @@ export class RegisterComponent {
     if(teamContainer){
       teamContainer.classList.toggle('clicked');
     }
+  }
+
+  get passwordMatch(): boolean {
+    const password = this.formulario.get('password')?.value;
+    const confirmPassword = this.formulario.get('confirmPassword')?.value;
+    return password === confirmPassword;
   }
 
 }

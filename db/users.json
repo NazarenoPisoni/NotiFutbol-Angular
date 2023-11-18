@@ -8,6 +8,15 @@
       "email": "nazareno_pisoni@hotmail.com",
       "password": "Naza1991",
       "favoriteTeamId": 435
+    },
+    {
+      "id": 2,
+      "firstName": "Juan",
+      "lastName": "Perez",
+      "dni": "22222222",
+      "email": "juan@gmail.com",
+      "password": "Juan1234",
+      "favoriteTeamId": 438
     }
   ]
 }
