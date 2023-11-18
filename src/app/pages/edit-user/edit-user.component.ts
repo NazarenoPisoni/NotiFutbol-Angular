@@ -12,8 +12,6 @@ import { UserService } from 'src/app/services/user.service';
 export class EditUserComponent {
 
   user: user | undefined;
-  searchQuery = '';
-  teams: any[] = [];
 
   constructor(private fb : FormBuilder,
               private userService : UserService,
@@ -21,11 +19,12 @@ export class EditUserComponent {
 
   formulario: FormGroup = this.fb.group({
     id: 0,
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
-    dni: ['', Validators.minLength(8)],
-    email: ['', Validators.required],
-    password: ['', Validators.required]
+    firstName: '',
+    lastName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]],
+    dni: '',
+    email: '',
+    password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d.*\d)[A-Za-z\d]{8,}$/)]],
+    confirmPassword: ['', Validators.required]
   })
 
   ngOnInit() {
@@ -38,18 +37,19 @@ export class EditUserComponent {
       this.user = await this.userService.getUser(id);
       this.formulario = this.fb.group({
         id: this.user?.id,
-        firstName: this.user?.firstName,
-        lastName: this.user?.lastName,
-        dni: this.user?.dni,
-        email: this.user?.email,
-        password: this.user?.password,
-        favoriteTeamId: this.user?.favoriteTeamId
+        firstName: [{ value: this.user?.firstName, disabled: false }, [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]],
+        lastName: [{ value: this.user?.lastName, disabled: false }, [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]],
+        dni: [{ value: this.user?.dni, disabled: true }],
+        email: [{ value: this.user?.email, disabled: true }],
+        password: [this.user?.password, [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d.*\d)[A-Za-z\d]{8,}$/)]],
+        confirmPassword: ['', Validators.required],
+        favoriteTeams: this.user?.favoriteTeams 
       })
     })
   }
 
   editUser() {
-    if(this.formulario.invalid) return;
+    if(this.formulario.invalid || !this.passwordMatch) return;
 
     const userUpdated : user = {
       id: this.formulario.controls['id'].value,
@@ -58,11 +58,17 @@ export class EditUserComponent {
       dni: this.formulario.controls['dni'].value,
       email: this.formulario.controls['email'].value,
       password: this.formulario.controls['password'].value,
-      favoriteTeamId: this.formulario.controls['favoriteTeamId'].value
+      favoriteTeams: this.formulario.controls['favoriteTeams'].value
       
     }
     alert('Data was updated succesfully');
     this.userService.putUser(userUpdated);  
+  }
+
+  get passwordMatch(): boolean {
+    const password = this.formulario.get('password')?.value;
+    const confirmPassword = this.formulario.get('confirmPassword')?.value;
+    return password === confirmPassword;
   }
 
 }

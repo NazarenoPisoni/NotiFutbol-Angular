@@ -1,63 +1,76 @@
 <app-navbar></app-navbar>
-<div class="registration">
-    <div class="form">
-        <h2>Edit your Account</h2>
 
-        <form (ngSubmit)="editUser()" [formGroup]="formulario">
-            <div class="form-group">
-                <label for="firstName"></label>First Name:
-                <input type="text" class="form-control" formControlName="firstName">
-                <span *ngIf="formulario.controls['firstName'].getError('required')
-                    && formulario.touched">
-                    This field is required 
-                </span>
-            </div>
-
-            <div class="form-group">
-                <label for="lastName"></label>Last Name:
-                <input type="text" class="form-control" formControlName="lastName">
-                <span *ngIf="formulario.controls['lastName'].getError('required')
-                    && formulario.touched">
-                    This field is required 
-                </span>
-            </div>
-
-            <div class="form-group">
-                <label for="dni"></label>DNI:
-                <input type="text" class="form-control" formControlName="dni">
-                <div>
-                    <span *ngIf="formulario.controls['dni'].getError('required')
-                        && formulario.touched">
-                        This field is required 
-                    </span>
+<body>
+    <div class="registration">
+        <div class="form">
+            <h2>Editar tu cuenta</h2>
+    
+            <form (ngSubmit)="editUser()" [formGroup]="formulario">
+                <div class="form-group">
+                    <label for="firstName"></label>Nombre:
+                    <input type="text" class="form-control" formControlName="firstName">
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['firstName'].getError('required')
+                            && formulario.touched">
+                            Este campo es requerido 
+                        </span>
+                    </div>
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['firstName'].getError('pattern')
+                            && formulario.touched">
+                            Solo se permiten letras en el Nombre 
+                        </span>
+                    </div>
                 </div>
-                <div>
-                    <span *ngIf="formulario.controls['dni'].getError('minlength')
-                        && formulario.touched">
-                        DNI must have at least 8 numbers 
-                    </span>
+    
+                <div class="form-group">
+                    <label for="lastName"></label>Apellido:
+                    <input type="text" class="form-control" formControlName="lastName">
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['lastName'].getError('required')
+                            && formulario.touched">
+                            Este campo es requerido 
+                        </span>
+                    </div>
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['lastName'].getError('pattern')
+                            && formulario.touched">
+                            Solo se permiten letras en el Apellido 
+                        </span>
+                    </div>
                 </div>
-            </div>
-
-            <div class="form-group">
-                <label for="email"></label>Email:
-                <input type="text" class="form-control" formControlName="email">
-                <span *ngIf="formulario.controls['email'].getError('required')
-                    && formulario.touched">
-                    This field is required 
-                </span>
-            </div>
-
-            <div class="form-group">
-                <label for="password"></label>Password:
-                <input type="password" class="form-control" formControlName="password">
-                <span *ngIf="formulario.controls['password'].getError('required')
-                    && formulario.touched">
-                    This field is required 
-                </span>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Update</button>
-        </form>
+    
+                <div class="form-group">
+                    <label for="password"></label>Contraseña:
+                    <input type="password" class="form-control" formControlName="password">
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['password'].getError('required')
+                            && formulario.touched">
+                            Este campo es requerido  
+                        </span>
+                    </div>
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['password'].getError('pattern')
+                            && formulario.touched">
+                            La contraseña debe tener entre 8 y 12 caracteres, una letra mayúscula, y dos números como mínimo 
+                        </span>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label for="password">Confirmar Contraseña:</label>
+                    <input type="password" class="form-control" formControlName="confirmPassword">
+                    <div *ngIf="!passwordMatch">
+                        <span class="error">
+                            Las contraseñas no coinciden  
+                        </span>
+                    </div>
+                </div>
+    
+                <button type="submit" class="btn btn-primary" [disabled]="formulario.invalid || !passwordMatch">Actualizar</button>
+            </form>
+        </div>
     </div>
-</div>
+</body>
+
+

@@ -35,13 +35,14 @@ export class RegisterComponent {
       updateOn: 'blur'
     }],
     password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d.*\d)[A-Za-z\d]{8,}$/)]],
-    favoriteTeamId: 0
+    confirmPassword: ['', Validators.required],
+    favoriteTeams: [[]]
   })
 
   
 
   saveUser() {
-    if(this.formulario.invalid) return;
+    if(this.formulario.invalid || !this.passwordMatch) return;
 
     const userRegistered : user = {
       id: this.formulario.controls['id'].value, 
@@ -50,7 +51,7 @@ export class RegisterComponent {
       dni: this.formulario.controls['dni'].value,
       email: this.formulario.controls['email'].value,
       password: this.formulario.controls['password'].value,
-      favoriteTeamId: this.formulario.controls['favoriteTeamId'].value
+      favoriteTeams: this.formulario.controls['favoriteTeams'].value
       
     }
       
@@ -80,7 +81,10 @@ export class RegisterComponent {
   }
 
   selectTeam(teamId: number) {
-    this.formulario.controls['favoriteTeamId'].setValue(teamId);
+    const currentFavoriteTeams = this.formulario.controls['favoriteTeams'].value as number[];
+    const updatedFavoriteTeams = [...currentFavoriteTeams, teamId];
+
+    this.formulario.controls['favoriteTeams'].setValue(updatedFavoriteTeams);
   }
 
   changeColor(event: Event) {
@@ -88,6 +92,12 @@ export class RegisterComponent {
     if(teamContainer){
       teamContainer.classList.toggle('clicked');
     }
+  }
+
+  get passwordMatch(): boolean {
+    const password = this.formulario.get('password')?.value;
+    const confirmPassword = this.formulario.get('confirmPassword')?.value;
+    return password === confirmPassword;
   }
 
 }
