@@ -21,6 +21,18 @@
                             Solo se permiten letras en el Nombre 
                         </span>
                     </div>
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['firstName'].getError('minlength')
+                            && formulario.touched">
+                            El nombre debe contener 3 letras como mínimo  
+                        </span>
+                    </div>
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['firstName'].getError('maxlength')
+                            && formulario.touched">
+                            El nombre no puede contener más de 20 letras    
+                        </span>
+                    </div>
                 </div>
     
                 <div class="form-group">
@@ -36,6 +48,18 @@
                         <span class="error" *ngIf="formulario.controls['lastName'].getError('pattern')
                             && formulario.touched">
                             Solo se permiten letras en el Apellido 
+                        </span>
+                    </div>
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['lastName'].getError('minlength')
+                            && formulario.touched">
+                            El apellido debe contener 2 letras como mínimo    
+                        </span>
+                    </div>
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['lastName'].getError('maxlength')
+                            && formulario.touched">
+                            El apellido no puede contener más de 20 letras    
                         </span>
                     </div>
                 </div>
