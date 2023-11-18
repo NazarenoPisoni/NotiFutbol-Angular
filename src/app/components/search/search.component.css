@@ -1,11 +1,18 @@
+body {
+    width: 90%;
+    margin: 0 auto;
+}
+
 h1 {
     font-size: 3rem;
     font-weight: bold;
+    margin-top: 2rem;
 }
 
 input {
     height: 2.5rem;
     width: 40%;
+    margin-top: .5rem;
 }
 
 p {
@@ -23,9 +30,19 @@ p {
     margin-top: 1rem;
 }
 
+.item a {
+    text-decoration: none;
+    color: black;
+}
+
 .item-img {
     height: 5rem;
     width: 5rem;
+}
+
+.item-name {
+    font-weight: bold;
+    margin-left: .5rem;
 }
 
 hr {
