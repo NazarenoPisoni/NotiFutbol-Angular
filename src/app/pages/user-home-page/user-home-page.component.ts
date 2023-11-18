@@ -31,7 +31,7 @@ export class UserHomePageComponent {
 
   async getTeam() {
     try {
-      const data = await this.teamService.getTeamById(this.getUser?.favoriteTeamId);
+      const data = await this.teamService.getTeamById(this.getUser?.favoriteTeams[0]);
       this.team = data.response;
       this.teamName = data.response[0].team.name;
     } catch (error) {

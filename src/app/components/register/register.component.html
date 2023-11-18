@@ -118,20 +118,22 @@
                 </div>
     
                 <div id="favorite-team">
-                    <label for="favoriteTeamId">Elige tu equipo favorito</label><br>
-                    <input type="text" name="favoriteTeamId" placeholder="Busca tu equipo" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}">
+                    <label for="favoriteTeams">Elige tus equipos favoritos</label><br>
+                    <input type="text" name="favoriteTeams" placeholder="Busca tus equipos" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}">
                     <button type="button" (click)="searchTeamsByName()">Buscar</button>
                 </div>
     
                 <div *ngIf="teams.length > 0">
-                    <div *ngFor="let team of teams.slice(0, 5)">
-                        <a (click)="selectTeam(team.team.id) ; changeColor($event)">
-                            <div class="team-container">
-                                <img [src]="team.team.logo" alt="Team Logo">
-                                <p><b>{{team.team.name}}</b></p>
-                                <p>{{team.team.country}}</p>
-                            </div>
-                        </a>
+                    <div class="grid">
+                        <div *ngFor="let team of teams.slice(0, 5)">
+                            <a (click)="selectTeam(team.team.id) ; changeColor($event)">
+                                <div class="team-container">
+                                    <img [src]="team.team.logo" alt="Team Logo">
+                                    <p><b>{{team.team.name}}</b></p>
+                                    <p>{{team.team.country}}</p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
     

@@ -36,7 +36,7 @@ export class RegisterComponent {
     }],
     password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d.*\d)[A-Za-z\d]{8,}$/)]],
     confirmPassword: ['', Validators.required],
-    favoriteTeamId: 0
+    favoriteTeams: [[]]
   })
 
   
@@ -51,7 +51,7 @@ export class RegisterComponent {
       dni: this.formulario.controls['dni'].value,
       email: this.formulario.controls['email'].value,
       password: this.formulario.controls['password'].value,
-      favoriteTeamId: this.formulario.controls['favoriteTeamId'].value
+      favoriteTeams: this.formulario.controls['favoriteTeams'].value
       
     }
       
@@ -81,7 +81,10 @@ export class RegisterComponent {
   }
 
   selectTeam(teamId: number) {
-    this.formulario.controls['favoriteTeamId'].setValue(teamId);
+    const currentFavoriteTeams = this.formulario.controls['favoriteTeams'].value as number[];
+    const updatedFavoriteTeams = [...currentFavoriteTeams, teamId];
+
+    this.formulario.controls['favoriteTeams'].setValue(updatedFavoriteTeams);
   }
 
   changeColor(event: Event) {
