@@ -22,10 +22,10 @@ export class RegisterComponent {
 
   formulario: FormGroup = this.fb.group({
     id: this.userService.getNextId(),
-    firstName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]],
-    lastName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]],
+    firstName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/), Validators.minLength(3), Validators.maxLength(20)]],
+    lastName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/), Validators.minLength(2), Validators.maxLength(20)]],
     dni: ['', {
-      validators: [Validators.minLength(8), Validators.pattern(/^[0-9]+$/)],
+      validators: [Validators.minLength(8), Validators.maxLength(8), Validators.pattern(/^[0-9]+$/)], 
       asyncValidators: [this.dniOrEmailValidator('dni')],
       updateOn: 'blur'
     }],
@@ -34,9 +34,9 @@ export class RegisterComponent {
       asyncValidators: [this.dniOrEmailValidator('email')],
       updateOn: 'blur'
     }],
-    password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d.*\d)[A-Za-z\d]{8,}$/)]],
+    password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d.*\d)[A-Za-z\d]{8,12}$/)]],
     confirmPassword: ['', Validators.required],
-    favoriteTeamId: 0
+    favoriteTeams: [[]]
   })
 
   
@@ -51,7 +51,7 @@ export class RegisterComponent {
       dni: this.formulario.controls['dni'].value,
       email: this.formulario.controls['email'].value,
       password: this.formulario.controls['password'].value,
-      favoriteTeamId: this.formulario.controls['favoriteTeamId'].value
+      favoriteTeams: this.formulario.controls['favoriteTeams'].value
       
     }
       
@@ -81,7 +81,10 @@ export class RegisterComponent {
   }
 
   selectTeam(teamId: number) {
-    this.formulario.controls['favoriteTeamId'].setValue(teamId);
+    const currentFavoriteTeams = this.formulario.controls['favoriteTeams'].value as number[];
+    const updatedFavoriteTeams = [...currentFavoriteTeams, teamId];
+
+    this.formulario.controls['favoriteTeams'].setValue(updatedFavoriteTeams);
   }
 
   changeColor(event: Event) {

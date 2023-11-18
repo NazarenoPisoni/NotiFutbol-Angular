@@ -20,6 +20,13 @@ body {
     margin-top: 2rem;
 }
 
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 5px;
+    margin-top: 2rem;
+}
+
 #favorite-team {
     margin-top: 2rem;
 }
@@ -30,6 +37,7 @@ body {
 
 .submit {
     margin-top: 2rem;
+    margin-bottom: 4rem;
 }
 
 #form-img {
@@ -51,12 +59,19 @@ body {
 .team-container {
     cursor: pointer;
     text-align: center;
+    max-width: 100px;
+    margin: 0 auto;
 }
 
 .team-container.clicked {
     background-color: blue;
     color: white;
     cursor: pointer;
+}
+
+.team-container img {
+    height: 4rem;
+    width: 4rem;
 }
 
 label {
