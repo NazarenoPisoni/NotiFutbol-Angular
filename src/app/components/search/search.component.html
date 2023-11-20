@@ -11,7 +11,7 @@
     <div class="grid">
         <div>
             <div *ngIf="teams && teams.length > 0">
-                <h2>Teams</h2>
+                <h2>Equipos</h2>
                 <div *ngFor="let team of teams.slice(0, 10)" class="item">
                     <a [routerLink]="['/team', team.team.id]">
                         <img [src]="team.team.logo" class="item-img">
@@ -23,7 +23,7 @@
         
         <div>
             <div *ngIf="leagues && leagues.length > 0">
-                <h2>Competitions</h2>
+                <h2>Competiciones</h2>
                 <div *ngFor="let league of leagues.slice(0, 10)" class="item">
                     <a [routerLink]="['/league', league.league.id]">
                         <img [src]="league.league.logo" class="item-img">
@@ -35,7 +35,7 @@
 
         <div>
             <div *ngIf="players && players.length > 0">
-                <h2>Players</h2>
+                <h2>Jugadores</h2>
                 <div *ngFor="let player of players.slice(0, 10)" class="item">
                     <a [routerLink]="['/player', player.strPlayer]">
                         <img *ngIf="player.strCutout" [src]="player.strCutout" class="item-img">
@@ -51,13 +51,15 @@
 
     <div class="other-news">
         <div *ngIf="players && players.length > 0">
-            <h2 class="top-news">Top News</h2>
-            <div *ngFor="let article of news.slice(0, 8)">
-                <div class="noticia">
-                    <a [href]="article.url">
-                        <img [src]="article.urlToImage" class="noticia-img">
-                        <p class="noticia-title">{{ article.title }}</p>
-                    </a>
+            <h2 class="top-news">Noticias relacionadas</h2>
+            <div class="news-grid">
+                <div *ngFor="let article of news.slice(0, 8)">
+                    <div class="noticia">
+                        <a [href]="article.url">
+                            <img [src]="article.urlToImage" class="noticia-img">
+                            <p class="noticia-title">{{ article.title }}</p>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
