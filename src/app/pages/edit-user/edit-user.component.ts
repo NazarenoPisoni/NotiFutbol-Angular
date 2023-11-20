@@ -20,11 +20,11 @@ export class EditUserComponent {
   formulario: FormGroup = this.fb.group({
     id: 0,
     firstName: '',
-    lastName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]],
+    lastName: '',
     dni: '',
     email: '',
-    password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d.*\d)[A-Za-z\d]{8,}$/)]],
-    confirmPassword: ['', Validators.required]
+    password: '',
+    confirmPassword: ''
   })
 
   ngOnInit() {
@@ -37,13 +37,13 @@ export class EditUserComponent {
       this.user = await this.userService.getUser(id);
       this.formulario = this.fb.group({
         id: this.user?.id,
-        firstName: [{ value: this.user?.firstName, disabled: false }, [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]],
-        lastName: [{ value: this.user?.lastName, disabled: false }, [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]],
+        firstName: [{ value: this.user?.firstName, disabled: false }, [Validators.required, Validators.pattern(/^[a-zA-Z]+$/), Validators.minLength(3), Validators.maxLength(20)]],
+        lastName: [{ value: this.user?.lastName, disabled: false }, [Validators.required, Validators.pattern(/^[a-zA-Z]+$/), Validators.minLength(2), Validators.maxLength(20)]],
         dni: [{ value: this.user?.dni, disabled: true }],
         email: [{ value: this.user?.email, disabled: true }],
         password: [this.user?.password, [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d.*\d)[A-Za-z\d]{8,}$/)]],
         confirmPassword: ['', Validators.required],
-        favoriteTeamId: this.user?.favoriteTeamId
+        favoriteTeams: this.user?.favoriteTeams 
       })
     })
   }
@@ -58,7 +58,7 @@ export class EditUserComponent {
       dni: this.formulario.controls['dni'].value,
       email: this.formulario.controls['email'].value,
       password: this.formulario.controls['password'].value,
-      favoriteTeamId: this.formulario.controls['favoriteTeamId'].value
+      favoriteTeams: this.formulario.controls['favoriteTeams'].value
       
     }
     alert('Data was updated succesfully');

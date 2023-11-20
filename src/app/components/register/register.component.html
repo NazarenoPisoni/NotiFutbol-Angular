@@ -18,7 +18,19 @@
                     <div>
                         <span class="error" *ngIf="formulario.controls['firstName'].getError('pattern')
                             && formulario.touched">
-                            Solo se permiten letras en el Nombre 
+                            Solo se permiten letras en el nombre 
+                        </span>
+                    </div>
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['firstName'].getError('minlength')
+                            && formulario.touched">
+                            El nombre debe contener 3 letras como mínimo  
+                        </span>
+                    </div>
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['firstName'].getError('maxlength')
+                            && formulario.touched">
+                            El nombre no puede contener más de 20 letras    
                         </span>
                     </div>
                 </div>
@@ -35,7 +47,19 @@
                     <div>
                         <span class="error" *ngIf="formulario.controls['lastName'].getError('pattern')
                             && formulario.touched">
-                            Solo se permiten letras en el Apellido 
+                            Solo se permiten letras en el apellido  
+                        </span>
+                    </div>
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['lastName'].getError('minlength')
+                            && formulario.touched">
+                            El apellido debe contener 2 letras como mínimo    
+                        </span>
+                    </div>
+                    <div>
+                        <span class="error" *ngIf="formulario.controls['lastName'].getError('maxlength')
+                            && formulario.touched">
+                            El apellido no puede contener más de 20 letras    
                         </span>
                     </div>
                 </div>
@@ -50,7 +74,8 @@
                         </span>
                     </div>
                     <div>
-                        <span class="error" *ngIf="formulario.controls['dni'].getError('minlength')
+                        <span class="error" *ngIf="(formulario.controls['dni'].getError('minlength')
+                            || formulario.controls['dni'].getError('maxlength'))
                             && formulario.touched">
                             El DNI debe tener 8 números 
                         </span>
@@ -118,20 +143,22 @@
                 </div>
     
                 <div id="favorite-team">
-                    <label for="favoriteTeamId">Elige tu equipo favorito</label><br>
-                    <input type="text" name="favoriteTeamId" placeholder="Busca tu equipo" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}">
+                    <label for="favoriteTeams">Elige tus equipos favoritos</label><br>
+                    <input type="text" name="favoriteTeams" placeholder="Busca tus equipos" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}">
                     <button type="button" (click)="searchTeamsByName()">Buscar</button>
                 </div>
     
                 <div *ngIf="teams.length > 0">
-                    <div *ngFor="let team of teams.slice(0, 5)">
-                        <a (click)="selectTeam(team.team.id) ; changeColor($event)">
-                            <div class="team-container">
-                                <img [src]="team.team.logo" alt="Team Logo">
-                                <p><b>{{team.team.name}}</b></p>
-                                <p>{{team.team.country}}</p>
-                            </div>
-                        </a>
+                    <div class="grid">
+                        <div *ngFor="let team of teams.slice(0, 5)">
+                            <a (click)="selectTeam(team.team.id) ; changeColor($event)">
+                                <div class="team-container">
+                                    <img [src]="team.team.logo" alt="Team Logo">
+                                    <p><b>{{team.team.name}}</b></p>
+                                    <p>{{team.team.country}}</p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
     
