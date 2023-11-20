@@ -15,6 +15,7 @@ export class RegisterComponent {
   teams: any[] = [];
   searchQuery = '';
   selectedTeam: HTMLElement | null = null;
+  registroExitoso: boolean = false;
 
   constructor(private fb : FormBuilder,
               private userService : UserService,
@@ -55,7 +56,7 @@ export class RegisterComponent {
       
     }
       
-    alert('Registration Successful!');
+    this.registroExitoso = true;
     this.userService.postUser(userRegistered);        
 
   }

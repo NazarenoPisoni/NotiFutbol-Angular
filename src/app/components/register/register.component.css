@@ -30,6 +30,7 @@ body {
 
 .submit {
     margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 #form-img {
@@ -65,4 +66,11 @@ label {
 
 .error {
     color: red;
+}
+
+#success {
+    color: blue;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 2rem;
 }

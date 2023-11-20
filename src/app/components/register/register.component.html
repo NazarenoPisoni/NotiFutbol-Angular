@@ -135,7 +135,7 @@
                     </div>
                 </div>
     
-                <button type="submit" class="submit btn btn-primary">Enviar</button>
+                <button type="submit" class="submit btn btn-primary" [disabled]="formulario.invalid || !passwordMatch">Enviar</button>
             </form>
         </div>
         <div id="form-img">
@@ -145,6 +145,10 @@
             <h3>Encuentra los resultados de los partidos</h3>
             <h3>Busca información sobre cualquier jugador</h3>
         </div>
+    </div>
+
+    <div *ngIf="registroExitoso">
+        <p id="success">Registro exitoso. En unos segundos será redirigido a la página principal.</p>
     </div>
 </body>
 
