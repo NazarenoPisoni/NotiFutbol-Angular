@@ -37,6 +37,7 @@ body {
 
 .submit {
     margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 #form-img {
@@ -73,10 +74,50 @@ body {
     width: 4rem;
 }
 
+.team-selected {
+    margin-top: 2rem;
+}
+
+.team-selected select {
+    margin-left: 1rem;
+}
+
 label {
     font-weight: bold;
 }
 
+.player-container {
+    cursor: pointer;
+    text-align: center;
+    max-width: 100px;
+    margin: 0 auto;
+}
+
+.player-container.clicked {
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+}
+
+.favorite-player button {
+    margin-left: 1rem;
+}
+
+.player-selected {
+    margin-top: 2rem;
+}
+
+.player-selected select {
+    margin-left: 1rem;
+}
+
 .error {
     color: red;
+}
+
+#success {
+    color: blue;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 2rem;
 }
