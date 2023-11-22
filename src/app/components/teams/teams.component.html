@@ -2,13 +2,15 @@
 
 <body>
     <div>
-        <h2>Most followed teams</h2>
+        <h2>Equipos más seguidos</h2>
         
         <div class="grid">
             <div *ngFor="let team of teams">
                 <div>
-                    <img [src]="team.team.logo" alt="Team Logo" class="team-logo">
-                    <p class="team-name">{{ team.team.name }}</p>
+                    <a [routerLink]="['/team', team.team.id]" class="team">
+                        <img [src]="team.team.logo" alt="Team Logo" class="team-logo">
+                        <p class="team-name">{{ team.team.name }}</p>
+                    </a>
                 </div>
             </div>
         </div>    
