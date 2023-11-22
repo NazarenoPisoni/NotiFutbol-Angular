@@ -5,10 +5,13 @@
       "firstName": "Nazareno",
       "lastName": "Pisoni",
       "dni": "35893486",
-      "email": "nazareno_pisoni@hotmail.com",
+      "email": "messimdq@gmail.com",
       "password": "Naza1991",
       "favoriteTeams": [
         435
+      ],
+      "favoritePlayers": [
+        "Lionel Messi"
       ]
     },
     {
@@ -18,28 +21,8 @@
       "dni": "22222222",
       "email": "juan@gmail.com",
       "password": "Juan1234",
-      "favoriteTeams": [
-        435
-      ],
-      "favoritePlayers": [
-        "Lionel Messi",
-        "Cristiano Ronaldo"
-      ]
-    },
-    {
-      "id": 3,
-      "firstName": "Jose",
-      "lastName": "Lopez",
-      "dni": "11111111",
-      "email": "jose@gmail.com",
-      "password": "Jose1234",
-      "favoriteTeams": [
-        451
-      ],
-      "favoritePlayers": [
-        "Emiliano Martinez",
-        "Edinson Cavani"
-      ]
+      "favoriteTeams": [],
+      "favoritePlayers": []
     }
   ]
 }

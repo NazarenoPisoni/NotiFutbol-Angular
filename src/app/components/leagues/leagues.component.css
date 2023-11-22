@@ -1,3 +1,8 @@
+body {
+    width: 90%;
+    margin: 8rem auto;
+}
+
 h2 {
     margin-top: 2rem;
 }
