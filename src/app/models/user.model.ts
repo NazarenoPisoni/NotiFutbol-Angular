@@ -6,4 +6,5 @@ export interface user {
     email: string,
     password: string,
     favoriteTeams: number[],
+    favoritePlayers: string[]
 }
