@@ -1,0 +1,42 @@
+/* .info-logo, .info-name{
+    margin: 0;
+    flex: 1;
+    padding: 20px;
+    border: 2px solid #df3131;
+    max-width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+.wrapper-logo{
+    border: 2px solid #0e0d0d ;
+    padding: 10 flex;
+    display: flex;
+} */
+
+.info-logo{
+    flex: 0.2;
+    padding: 20px;
+    max-width: 100%;
+    text-align: center;
+    border: 2px solid #df3131;
+}
+
+.info-name{
+    flex: 0.8;
+    padding: 20px;
+    margin-top: 2%;
+    max-width: 100%;
+    border: 2px solid #df3131;
+}
+
+
+.wrapper-logo{
+    border: 2px solid #0e0d0d ;
+    display: flex;
+}
+
+/* h3{
+    font-size:medium;
+} */
