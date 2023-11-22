@@ -8,10 +8,10 @@
     </div>
 </div>
 
-<table >
+<table class="table table-borderless  table-margin" >
      <thead>
-        <td>Posicion</td>
-        <td>-</td>
+        <td>Posición</td>
+        <td></td>
         <td>Nombre</td>
         <td>Pts</td>
         <td>PJ</td>
@@ -26,7 +26,7 @@
      <tbody *ngFor="let equipo of league[0].league.standings[0]">
         <td>{{equipo.rank}}</td>
         <td> 
-            <img src= "{{equipo.team.logo}}" alt="">
+            <img class="imgEquipo" src= "{{equipo.team.logo}}" alt="">
         </td>
         <td>{{equipo.team.name}}</td>
         <td>{{equipo.points}}</td>

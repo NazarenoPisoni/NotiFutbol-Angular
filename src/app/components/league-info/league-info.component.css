@@ -25,10 +25,24 @@
 .wrapper-logo{
     /* border: 2px solid #0e0d0d ; */
     display: flex;
+    
 }
 
 h3{
     margin-left: 30px;
     font-size: 60px;
     font-style: italic;
+}
+
+.table-margin{
+    margin-left: 20px;
+
+}
+
+.imgEquipo{
+    width: 50px;
+    height: auto;
+}
+thead td{
+    font-weight: bold;
 }
