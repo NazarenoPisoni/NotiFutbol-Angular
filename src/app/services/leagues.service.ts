@@ -8,6 +8,7 @@ export class LeaguesService {
 
   private apiUrl = 'https://v3.football.api-sports.io';
   private apiKey = 'e4bf08371a3939b5a303e81f9aad2a39';
+  private season = 2023;
 
   constructor(private http : HttpClient) { }
 
@@ -44,6 +45,19 @@ export class LeaguesService {
     const options = { headers: headers };
 
     return this.http.get(`${this.apiUrl}/leagues?id=${id}`, options)
+    .toPromise();
+  }
+
+  
+  getStandingById(id : number) : Promise<any> {
+    const headers = new HttpHeaders({
+      'x-rapidapi-host': 'v3.football.api-sports.io',
+      'x-rapidapi-key': this.apiKey
+    });
+
+    const options = { headers: headers };
+
+    return this.http.get(`${this.apiUrl}/standings?league=${id}&season=${this.season}`, options)
     .toPromise();
   }
 }

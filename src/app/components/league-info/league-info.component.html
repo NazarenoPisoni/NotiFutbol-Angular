@@ -1,3 +1,47 @@
 <app-navbar></app-navbar>
+<div class="wrapper-logo">
+    <div class="info-logo">
+        <img id="imagen" [src]= "league[0].league.logo"  >
+    </div>
+    <div class="info-name">
+        <h3> <b>{{league[0].league.name}}</b></h3>
+    </div>
+</div>
 
-<p>league-info works!</p>
+<table class="table table-borderless  table-margin" >
+     <thead>
+        <td>Posición</td>
+        <td></td>
+        <td>Nombre</td>
+        <td>Pts</td>
+        <td>PJ</td>
+        <td>PG</td>
+        <td>PE</td>
+        <td>PP</td>
+        <td>GF</td>
+        <td>GC</td>
+        <td>DG</td>
+     </thead>
+
+     <tbody *ngFor="let equipo of league[0].league.standings[0]">
+        <td>{{equipo.rank}}</td>
+        <td> 
+            <img class="imgEquipo" src= "{{equipo.team.logo}}" alt="">
+        </td>
+        <td>{{equipo.team.name}}</td>
+        <td>{{equipo.points}}</td>
+        <td>{{equipo.all.played}}</td>
+        <td>{{equipo.all.win}}</td>
+        <td>{{equipo.all.draw}}</td>
+        <td>{{equipo.all.lose}}</td>
+        <td>{{equipo.all.goals.for}}</td>
+        <td>{{equipo.all.goals.against}}</td>
+        <td>{{equipo.goalsDiff}}</td>
+     </tbody>
+
+
+
+</table>
+
+
+
