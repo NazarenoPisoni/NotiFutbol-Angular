@@ -12,6 +12,21 @@
         541,
         529
       ]
+    },
+    {
+      "id": 2,
+      "firstName": "Juan",
+      "lastName": "Perez",
+      "dni": "22222222",
+      "email": "juan@gmail.com",
+      "password": "Juan1234",
+      "favoriteTeams": [
+        435
+      ],
+      "favoritePlayers": [
+        "Lionel Messi",
+        "Cristiano Ronaldo"
+      ]
     }
   ]
 }

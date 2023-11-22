@@ -43,7 +43,8 @@ export class EditUserComponent {
         email: [{ value: this.user?.email, disabled: true }],
         password: [this.user?.password, [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d.*\d)[A-Za-z\d]{8,}$/)]],
         confirmPassword: ['', Validators.required],
-        favoriteTeams: this.user?.favoriteTeams 
+        favoriteTeams: this.user?.favoriteTeams, 
+        favoritePlayers: this.user?.favoritePlayers
       })
     })
   }
@@ -58,8 +59,8 @@ export class EditUserComponent {
       dni: this.formulario.controls['dni'].value,
       email: this.formulario.controls['email'].value,
       password: this.formulario.controls['password'].value,
-      favoriteTeams: this.formulario.controls['favoriteTeams'].value
-      
+      favoriteTeams: this.formulario.controls['favoriteTeams'].value,
+      favoritePlayers: this.formulario.controls['favoritePlayers'].value
     }
     alert('Data was updated succesfully');
     this.userService.putUser(userUpdated);  

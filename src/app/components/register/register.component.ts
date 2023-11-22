@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Observable, catchError, map, of } from 'rxjs';
 import { user } from 'src/app/models/user.model';
+import { PlayersService } from 'src/app/services/players.service';
 import { TeamsService } from 'src/app/services/teams.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -13,12 +14,17 @@ import { UserService } from 'src/app/services/user.service';
 export class RegisterComponent {
   
   teams: any[] = [];
+  searchPlayerQuery = '';
+  players: any[] = [];
+  favoritePlayers: string[] = [];
+  favoriteTeams: string[] = [];
   searchQuery = '';
   selectedTeam: HTMLElement | null = null;
 
   constructor(private fb : FormBuilder,
               private userService : UserService,
-              private teamService : TeamsService) {}
+              private teamService : TeamsService,
+              private playerService : PlayersService) {}
 
   formulario: FormGroup = this.fb.group({
     id: this.userService.getNextId(),
@@ -36,7 +42,8 @@ export class RegisterComponent {
     }],
     password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d.*\d)[A-Za-z\d]{8,}$/)]],
     confirmPassword: ['', Validators.required],
-    favoriteTeams: [[]]
+    favoriteTeams: [[]],
+    favoritePlayers: [[]]
   })
 
   
@@ -51,8 +58,8 @@ export class RegisterComponent {
       dni: this.formulario.controls['dni'].value,
       email: this.formulario.controls['email'].value,
       password: this.formulario.controls['password'].value,
-      favoriteTeams: this.formulario.controls['favoriteTeams'].value
-      
+      favoriteTeams: this.formulario.controls['favoriteTeams'].value,
+      favoritePlayers: this.formulario.controls['favoritePlayers'].value
     }
       
     alert('Registration Successful!');
@@ -80,17 +87,43 @@ export class RegisterComponent {
     })
   }
 
-  selectTeam(teamId: number) {
+  selectTeam(teamId: number, teamName: string) {
     const currentFavoriteTeams = this.formulario.controls['favoriteTeams'].value as number[];
     const updatedFavoriteTeams = [...currentFavoriteTeams, teamId];
 
+    this.favoriteTeams.push(teamName);
     this.formulario.controls['favoriteTeams'].setValue(updatedFavoriteTeams);
   }
 
-  changeColor(event: Event) {
+  searchPlayersByName() {
+    this.playerService.searchPlayersByName(this.searchPlayerQuery)
+    .subscribe((data) => {
+      this.players = data;
+    },
+    (error) => {
+      console.log(error);
+    })
+  }
+
+  selectPlayer(player: any) {
+    const currentFavoritePlayers = this.formulario.controls['favoritePlayers'].value as string[];
+    const updatedFavoritePlayers = [...currentFavoritePlayers, player.strPlayer];
+
+    this.favoritePlayers = updatedFavoritePlayers;
+    this.formulario.controls['favoritePlayers'].setValue(updatedFavoritePlayers);
+  }
+
+  changeColorTeam(event: Event) {
     const teamContainer = (event.target as HTMLElement).closest('.team-container');
     if(teamContainer){
       teamContainer.classList.toggle('clicked');
+    }
+  }
+
+  changeColorPlayer(event: Event) {
+    const playerContainer = (event.target as HTMLElement).closest('.player-container');
+    if(playerContainer){
+      playerContainer.classList.toggle('clicked');
     }
   }
 
