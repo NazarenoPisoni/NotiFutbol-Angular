@@ -20,7 +20,7 @@ export class NewsComponent {
   getFootballNews() {
     this.newsService.getNews()
     .then((response) => {
-      const articles = response.articles;
+      const articles = response.articles.reverse();
       this.mainNews = articles[0];
       this.otherNews = articles.slice(1);
     })

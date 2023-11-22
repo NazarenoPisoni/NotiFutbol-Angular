@@ -21,12 +21,14 @@ export class UserHomePageComponent {
   teamName: string = '';
   latestMatches: any[] = [];
   mainNews: any;
-  otherNews: any[] = [];            
+  otherNews: any[] = [];
+  playerNews: any[] = [];           
 
   async ngOnInit() {
     await this.getTeam();
     this.getNewsByTeam();
     await this.getLatestMatches();
+    await this.getNewsByPlayer();
   } 
   
   get getUser(): user | undefined {
@@ -46,7 +48,7 @@ export class UserHomePageComponent {
   getNewsByTeam() {
     this.newsService.getNewsByName(this.teamName)
     .then((data) => {
-      const articles = data.articles;
+      const articles = data.articles.reverse();
       this.mainNews = articles[0];
       this.otherNews = articles.slice(1);
     })
@@ -61,6 +63,18 @@ export class UserHomePageComponent {
         const data = await this.matchService.getMatchByTeamId(teamId);
         const teamMatches = data.response.reverse().slice(0, 3);
         this.latestMatches = this.latestMatches.concat(teamMatches.reverse());
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+
+  async getNewsByPlayer() {
+    for (const player of this.getUser?.favoritePlayers || []) {
+      try {
+        const data = await this.newsService.getNewsByName(player);
+        const playerNews = data.articles.reverse().slice(0, 4);
+        this.playerNews = this.playerNews.concat(playerNews);
       } catch (error) {
         console.log(error);
       }

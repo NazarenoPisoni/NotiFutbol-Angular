@@ -25,6 +25,21 @@
         "Lionel Messi",
         "Cristiano Ronaldo"
       ]
+    },
+    {
+      "id": 3,
+      "firstName": "Jose",
+      "lastName": "Lopez",
+      "dni": "11111111",
+      "email": "jose@gmail.com",
+      "password": "Jose1234",
+      "favoriteTeams": [
+        451
+      ],
+      "favoritePlayers": [
+        "Emiliano Martinez",
+        "Edinson Cavani"
+      ]
     }
   ]
 }

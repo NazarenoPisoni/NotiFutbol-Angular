@@ -57,7 +57,7 @@ export class SearchComponent {
   searchNewsByName() {
     this.newsService.getNewsByName(this.searchQuery)
     .then((data) => {
-      this.news = data.articles;
+      this.news = data.articles.reverse();
       console.log(data.articles);
     })
     .catch((error) => {

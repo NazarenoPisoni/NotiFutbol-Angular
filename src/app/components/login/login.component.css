@@ -24,3 +24,7 @@ input {
     margin-left: 2rem;
     color: red;
 }
+
+.required {
+    color: red;
+}

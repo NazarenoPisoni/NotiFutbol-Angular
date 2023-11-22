@@ -36,7 +36,15 @@
         </a>
     </div>
     <div class="other-news">
-        <div *ngFor="let article of otherNews.slice(0, 12)">
+        <div *ngFor="let article of otherNews.slice(0, 8)">
+            <div class="noticia">
+                <a [href]="article.url">
+                    <img [src]="article.urlToImage" class="noticia-img">
+                    <p class="noticia-title">{{ article.title }}</p>
+                </a>
+            </div>
+        </div>
+        <div *ngFor="let article of playerNews">
             <div class="noticia">
                 <a [href]="article.url">
                     <img [src]="article.urlToImage" class="noticia-img">
