@@ -3,6 +3,28 @@
 <body>
     <h1>Bienvenido {{getUser?.firstName}}!</h1>
 
+    <h2>Ultimos partidos</h2>
+    <div class="grid">
+        <div *ngFor="let match of latestMatches">
+            <div class="match-info">
+                <div class="match-teams">
+                    <p><img [src]="match.teams.home.logo" class="team-logo"><span>{{ match.teams.home.name }}</span></p>
+                    <p><img [src]="match.teams.away.logo" class="team-logo"><span>{{ match.teams.away.name }}</span></p>
+                </div>
+                <div class="match-result">
+                    <p>{{ match.goals.home }}</p>
+                    <p>{{ match.goals.away }}</p>
+                </div>
+                <div class="match-time">
+                    <p *ngIf="!match.fixture.status.elapsed">Próximo partido</p>
+                    <p *ngIf="match.fixture.status.long !== 'Match Finished' && match.fixture.status.elapsed">{{match.fixture.status.elapsed}}'</p>
+                    <p *ngIf="match.fixture.status.long === 'Match Finished'">Fin del partido</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
     <h2>Noticias principales</h2>
     <div>
         <a [href]="mainNews.url" class="main-news">
@@ -14,7 +36,15 @@
         </a>
     </div>
     <div class="other-news">
-        <div *ngFor="let article of otherNews.slice(0, 12)">
+        <div *ngFor="let article of otherNews.slice(0, 8)">
+            <div class="noticia">
+                <a [href]="article.url">
+                    <img [src]="article.urlToImage" class="noticia-img">
+                    <p class="noticia-title">{{ article.title }}</p>
+                </a>
+            </div>
+        </div>
+        <div *ngFor="let article of playerNews">
             <div class="noticia">
                 <a [href]="article.url">
                     <img [src]="article.urlToImage" class="noticia-img">

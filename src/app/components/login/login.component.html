@@ -7,13 +7,13 @@
             <label for="email">Email: </label>
             <input type="email" class="form-control" formControlName="email">
             <div>
-                <span *ngIf="formulario.controls['email'].getError('required')
+                <span class="required" *ngIf="formulario.controls['email'].getError('required')
                     && formulario.touched">
                     Este campo es requerido 
                 </span>
             </div>
             <div>
-                <span *ngIf="formulario.controls['email'].getError('email')
+                <span class="required" *ngIf="formulario.controls['email'].getError('email')
                     && formulario.touched">
                     Por favor ingrese un email válido 
                 </span>
@@ -23,7 +23,7 @@
         <div class="form-group">
             <label for="password">Password: </label>
             <input type="password" class="form-control" formControlName="password">
-            <span *ngIf="formulario.controls['password'].getError('required')
+            <span class="required" *ngIf="formulario.controls['password'].getError('required')
                         && formulario.touched">
                         Este campo es requerido 
             </span>
