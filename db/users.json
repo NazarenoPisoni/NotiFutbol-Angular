@@ -1,5 +1,18 @@
 {
   "users": [
-    
+    {
+      "id": 1,
+      "firstName": "Nazareno",
+      "lastName": "Pisoni",
+      "dni": "35893486",
+      "email": "nazareno_pisoni@hotmail.com",
+      "password": "Naza1234",
+      "favoriteTeams": [
+        435
+      ],
+      "favoritePlayers": [
+        "Lionel Messi"
+      ]
+    }
   ]
 }
