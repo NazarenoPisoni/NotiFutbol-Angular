@@ -44,3 +44,8 @@ h3{
 thead td{
     font-weight: bold;
 }
+
+body{
+    width: 90%;
+    margin: 8rem auto;
+}
