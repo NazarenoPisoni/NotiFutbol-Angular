@@ -50,7 +50,7 @@
     <hr>
 
     <div class="other-news">
-        <div *ngIf="players && players.length > 0">
+        <div *ngIf="players || leagues || teams">
             <h2 class="top-news">Noticias relacionadas</h2>
             <div class="news-grid">
                 <div *ngFor="let article of news.slice(0, 8)">

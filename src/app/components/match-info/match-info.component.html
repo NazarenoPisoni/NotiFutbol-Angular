@@ -1,52 +1,56 @@
 <app-navbar></app-navbar>
 
-<div *ngFor="let m of match">
-    <div class="match-header">
-        <div>
-            <span class="teams-name">{{m.teams.home.name}} <img [src]="m.teams.home.logo" class="team-logo"></span>
-        </div>
-        <div class="match-result">
-            <p><img [src]="m.league.logo" id="league-logo"><span>{{ m.league.name }}</span></p>
-            <p id="goals">{{m.goals.home}} : {{m.goals.away}}</p>
-            <p>{{m.fixture.status.long}}</p>
-        </div>
-        <div>
-            <span class="teams-name"><img [src]="m.teams.away.logo" class="team-logo"> {{m.teams.away.name}}</span>
-        </div>
-    </div>
-
-    <div class="match-events" *ngFor="let e of m.events">
-        <div *ngIf="e.type === 'Goal' || e.type === 'subst' || e.type === 'Card'" class="event">
-            <div class="event-info" [ngStyle]="{'visibility': e.team.id === m.teams.home.id ? 'visible' : 'hidden'}">
-                <div *ngIf="e.team.id === m.teams.home.id" class="event-home">
-                    <div>
-                        <p class="event-text"><b>{{e.player.name}}</b></p>
-                        <p *ngIf="e.assist.name" class="event-text">{{e.assist.name}}</p>
-                    </div>
-                    <div>
-                        <img *ngIf="e.type === 'Goal'" src="https://image-service.onefootball.com/transform?w=24&h=24&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Fcw%252Ficons%252Fgoal-light.svg" class="event-icon">
-                        <img *ngIf="e.type === 'subst'" src="https://image-service.onefootball.com/transform?w=24&h=24&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Fcw%252Ficons%252Fsubstitution.svg" class="event-icon">
-                        <img *ngIf="e.detail === 'Yellow Card'" src="https://image-service.onefootball.com/transform?w=24&h=24&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Fcw%252Ficons%252Fyellow-card-light.svg" class="event-icon">
-                        <img *ngIf="e.detail === 'Red Card'" src="https://image-service.onefootball.com/transform?w=24&h=24&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Fcw%252Ficons%252Fred-card-light.svg" class="event-icon">
-                    </div>
-                </div>
+<body>
+    <div *ngFor="let m of match">
+        <div class="match-header">
+            <div>
+                <span class="teams-name">{{m.teams.home.name}} <img [src]="m.teams.home.logo" class="team-logo"></span>
             </div>
-            <p><b>{{e.time.elapsed}}'</b></p>
-            <div class="event-info" [ngStyle]="{'visibility': e.team.id === m.teams.away.id ? 'visible' : 'hidden'}">
-                <div *ngIf="e.team.id === m.teams.away.id" class="event-away">
-                    <div>
-                        <img *ngIf="e.type === 'Goal'" src="https://image-service.onefootball.com/transform?w=24&h=24&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Fcw%252Ficons%252Fgoal-light.svg" class="event-icon">
-                        <img *ngIf="e.type === 'subst'" src="https://image-service.onefootball.com/transform?w=24&h=24&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Fcw%252Ficons%252Fsubstitution.svg" class="event-icon">
-                        <img *ngIf="e.detail === 'Yellow Card'" src="https://image-service.onefootball.com/transform?w=24&h=24&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Fcw%252Ficons%252Fyellow-card-light.svg" class="event-icon">
-                        <img *ngIf="e.detail === 'Red Card'" src="https://image-service.onefootball.com/transform?w=24&h=24&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Fcw%252Ficons%252Fred-card-light.svg" class="event-icon">
-                    </div>
-                    <div>
-                        <p class="event-text"><b>{{e.player.name}}</b></p>
-                        <p *ngIf="e.assist.name" class="event-text">{{e.assist.name}}</p>
+            <div class="match-result">
+                <p><img [src]="m.league.logo" id="league-logo"><span>{{ m.league.name }}</span></p>
+                <p id="goals">{{m.goals.home}} : {{m.goals.away}}</p>
+                <p>{{m.fixture.status.long}}</p>
+            </div>
+            <div>
+                <span class="teams-name"><img [src]="m.teams.away.logo" class="team-logo"> {{m.teams.away.name}}</span>
+            </div>
+        </div>
+    
+        <div class="match-events" *ngFor="let e of m.events">
+            <div *ngIf="e.type === 'Goal' || e.type === 'subst' || e.type === 'Card'" class="event">
+                <div class="event-info" [ngStyle]="{'visibility': e.team.id === m.teams.home.id ? 'visible' : 'hidden'}">
+                    <div *ngIf="e.team.id === m.teams.home.id" class="event-home">
+                        <div>
+                            <p class="event-text"><b>{{e.player.name}}</b></p>
+                            <p *ngIf="e.assist.name" class="event-text">{{e.assist.name}}</p>
+                        </div>
+                        <div>
+                            <img *ngIf="e.type === 'Goal'" src="https://image-service.onefootball.com/transform?w=24&h=24&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Fcw%252Ficons%252Fgoal-light.svg" class="event-icon">
+                            <img *ngIf="e.type === 'subst'" src="https://image-service.onefootball.com/transform?w=24&h=24&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Fcw%252Ficons%252Fsubstitution.svg" class="event-icon">
+                            <img *ngIf="e.detail === 'Yellow Card'" src="https://image-service.onefootball.com/transform?w=24&h=24&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Fcw%252Ficons%252Fyellow-card-light.svg" class="event-icon">
+                            <img *ngIf="e.detail === 'Red Card'" src="https://image-service.onefootball.com/transform?w=24&h=24&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Fcw%252Ficons%252Fred-card-light.svg" class="event-icon">
+                        </div>
                     </div>
                 </div>
-            </div> 
+                <p><b>{{e.time.elapsed}}'</b></p>
+                <div class="event-info" [ngStyle]="{'visibility': e.team.id === m.teams.away.id ? 'visible' : 'hidden'}">
+                    <div *ngIf="e.team.id === m.teams.away.id" class="event-away">
+                        <div>
+                            <img *ngIf="e.type === 'Goal'" src="https://image-service.onefootball.com/transform?w=24&h=24&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Fcw%252Ficons%252Fgoal-light.svg" class="event-icon">
+                            <img *ngIf="e.type === 'subst'" src="https://image-service.onefootball.com/transform?w=24&h=24&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Fcw%252Ficons%252Fsubstitution.svg" class="event-icon">
+                            <img *ngIf="e.detail === 'Yellow Card'" src="https://image-service.onefootball.com/transform?w=24&h=24&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Fcw%252Ficons%252Fyellow-card-light.svg" class="event-icon">
+                            <img *ngIf="e.detail === 'Red Card'" src="https://image-service.onefootball.com/transform?w=24&h=24&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Fcw%252Ficons%252Fred-card-light.svg" class="event-icon">
+                        </div>
+                        <div>
+                            <p class="event-text"><b>{{e.player.name}}</b></p>
+                            <p *ngIf="e.assist.name" class="event-text">{{e.assist.name}}</p>
+                        </div>
+                    </div>
+                </div> 
+            </div>
         </div>
     </div>
-</div>
+</body>
+
+
 

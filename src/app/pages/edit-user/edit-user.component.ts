@@ -12,6 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 export class EditUserComponent {
 
   user: user | undefined;
+  actualizacionExitosa: boolean = false;
 
   constructor(private fb : FormBuilder,
               private userService : UserService,
@@ -42,9 +43,7 @@ export class EditUserComponent {
         dni: [{ value: this.user?.dni, disabled: true }],
         email: [{ value: this.user?.email, disabled: true }],
         password: [this.user?.password, [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*\d.*\d)[A-Za-z\d]{8,}$/)]],
-        confirmPassword: ['', Validators.required],
-        favoriteTeams: this.user?.favoriteTeams, 
-        favoritePlayers: this.user?.favoritePlayers
+        confirmPassword: ['', Validators.required]
       })
     })
   }
@@ -59,10 +58,11 @@ export class EditUserComponent {
       dni: this.formulario.controls['dni'].value,
       email: this.formulario.controls['email'].value,
       password: this.formulario.controls['password'].value,
-      favoriteTeams: this.formulario.controls['favoriteTeams'].value,
-      favoritePlayers: this.formulario.controls['favoritePlayers'].value
+      favoriteTeams: this.user?.favoriteTeams ? this.user.favoriteTeams : [],
+      favoritePlayers: this.user?.favoritePlayers ? this.user.favoritePlayers : []
     }
-    alert('Data was updated succesfully');
+    
+    this.actualizacionExitosa = true;
     this.userService.putUser(userUpdated);  
   }
 

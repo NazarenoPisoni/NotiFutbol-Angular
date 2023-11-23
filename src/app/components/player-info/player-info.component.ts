@@ -31,7 +31,7 @@ export class PlayerInfoComponent {
 
     this.newsService.getNewsByName(this.playerName)
     .then((data) => {
-      this.news = data.articles;
+      this.news = data.articles.reverse();
     })
     .catch((error) => {
       console.log(error);
