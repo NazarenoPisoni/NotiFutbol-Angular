@@ -5,5 +5,6 @@ export interface user {
     dni: string,
     email: string,
     password: string,
-    favoriteTeamId: number,
+    favoriteTeams: number[],
+    favoritePlayers: string[]
 }

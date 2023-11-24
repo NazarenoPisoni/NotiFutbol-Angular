@@ -1,15 +1,23 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Anek+Telugu&family=Lato&family=Roboto:wght@300&family=Ubuntu:wght@700&display=swap');
+
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: rgb(10, 203, 10);
     padding-left: 4rem;
-    padding-right: 4rem;    
+    padding-right: 4rem;
+    position: fixed;
+    top: 0;
+    width: 100%;    
 }
 
 .navbar-left {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
 }
 
 .navbar-right {
@@ -21,7 +29,28 @@
 .navbar-left a {
     text-decoration: none;
     color: white;
-    margin-right: 40px;
+    margin-right: 2rem;
+    margin-left: 2rem;
+}
+
+.logo {
+    margin-right: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 4rem;
+    width: 4rem;
+    object-fit: contain;
+}
+
+.logo span {
+    margin-left: .2rem;
+    color: orange;
+    font-weight: bold;
+    font-size: 2rem;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .navbar-right a {

@@ -6,8 +6,13 @@
       "lastName": "Pisoni",
       "dni": "35893486",
       "email": "nazareno_pisoni@hotmail.com",
-      "password": "Naza1991",
-      "favoriteTeamId": 435
+      "password": "Naza1234",
+      "favoriteTeams": [
+        435
+      ],
+      "favoritePlayers": [
+        "Lionel Messi"
+      ]
     }
   ]
 }

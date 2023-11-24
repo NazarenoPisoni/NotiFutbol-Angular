@@ -2,56 +2,60 @@
 
 <hr>
 
-<p>JUGADOR</p>
-<div *ngFor="let p of player">
-    <img [src]="p.strCutout" id="player-img"><span id="player-title">{{ p.strPlayer }}</span>
+<body>
+    <p>JUGADOR</p>
+    <div *ngFor="let p of player">
+        <img [src]="p.strCutout" id="player-img"><span id="player-title">{{ p.strPlayer }}</span>
 
-    <div class="player-info">
-        <div id="player-stats">
-            <p><b>INFORMACION DEL JUGADOR</b></p>
-            <p>Nacionalidad: {{ p.strNationality}}</p>
-            <p>Equipo: {{ p.strTeam}}</p>
-            <p>Posición: {{ p.strPosition}}</p>
-            <p>Número de jugador: {{ p.strNumber}}</p>
-            <p>Fecha de nacimiento: {{ p.dateBorn}}</p>
-            <p>Lugar de nacimiento: {{ p.strBirthLocation}}</p>
-            <p>Estado: {{ p.strStatus}}</p>
-            <a [href]="'https://' + p.strFacebook" target="_blank"><i class="bi bi-facebook facebook-icon"></i></a>
-            <a [href]="'https://' + p.strTwitter" target="_blank"><i class="bi bi-twitter twitter-icon"></i></a>
-            <a [href]="'https://' + p.strInstagram" target="_blank"><i class="bi bi-instagram instagram-icon"></i></a>
-        </div>
-    
-        <div id="player-photos">
-            <p><b>GALERIA DE IMAGENES</b></p>
-            <div id="photos">
-                <div>
-                    <a [href]="p.strFanart1"><img [src]="p.strFanart1"></a>
-                </div>
-                <div>
-                    <a [href]="p.strFanart2"><img [src]="p.strFanart2"></a>
-                </div>
-                <div>
-                    <a [href]="p.strFanart3"><img [src]="p.strFanart3"></a>
-                </div>
-                <div>
-                    <a [href]="p.strFanart4"><img [src]="p.strFanart4"></a>
+        <div class="player-info">
+            <div id="player-stats">
+                <p><b>INFORMACION DEL JUGADOR</b></p>
+                <p>Nacionalidad: {{ p.strNationality}}</p>
+                <p>Equipo: {{ p.strTeam}}</p>
+                <p>Posición: {{ p.strPosition}}</p>
+                <p>Número de jugador: {{ p.strNumber}}</p>
+                <p>Fecha de nacimiento: {{ p.dateBorn}}</p>
+                <p>Lugar de nacimiento: {{ p.strBirthLocation}}</p>
+                <p>Estado: {{ p.strStatus}}</p>
+                <a [href]="'https://' + p.strFacebook" target="_blank"><i class="bi bi-facebook facebook-icon"></i></a>
+                <a [href]="'https://' + p.strTwitter" target="_blank"><i class="bi bi-twitter twitter-icon"></i></a>
+                <a [href]="'https://' + p.strInstagram" target="_blank"><i class="bi bi-instagram instagram-icon"></i></a>
+            </div>
+        
+            <div id="player-photos">
+                <p><b>GALERIA DE IMAGENES</b></p>
+                <div id="photos">
+                    <div>
+                        <a [href]="p.strFanart1"><img [src]="p.strFanart1"></a>
+                    </div>
+                    <div>
+                        <a [href]="p.strFanart2"><img [src]="p.strFanart2"></a>
+                    </div>
+                    <div>
+                        <a [href]="p.strFanart3"><img [src]="p.strFanart3"></a>
+                    </div>
+                    <div>
+                        <a [href]="p.strFanart4"><img [src]="p.strFanart4"></a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<hr>
+    <hr>
 
-<h2 class="top-news">Noticias relacionadas</h2>
-<div class="other-news">
-    <div *ngFor="let article of news.slice(0, 8)">
-        <div class="noticia">
-            <a [href]="article.url">
-                <img [src]="article.urlToImage" class="noticia-img">
-                <p class="noticia-title">{{ article.title }}</p>
-            </a>
+    <h2 class="top-news">Noticias relacionadas</h2>
+    <div class="other-news">
+        <div *ngFor="let article of news.slice(0, 8)">
+            <div class="noticia">
+                <a [href]="article.url">
+                    <img [src]="article.urlToImage" class="noticia-img">
+                    <p class="noticia-title">{{ article.title }}</p>
+                </a>
+            </div>
         </div>
     </div>
-</div>
+</body>
+
+
 

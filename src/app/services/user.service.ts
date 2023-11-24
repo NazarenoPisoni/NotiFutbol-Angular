@@ -47,7 +47,10 @@ export class UserService {
                   }
                 }
       )
-      this.router.navigate(['home']);                
+      setTimeout(() => {
+        this.router.navigate(['home']);
+      }, 5000);
+                      
     } catch (error) {
       console.log(error);
     }
@@ -68,7 +71,11 @@ export class UserService {
     try {
       await fetch(`${this.url}/${user.id}`,
                 {method: 'PUT', body: JSON.stringify(user), headers: {'Content-type': 'application/json'}})
-      this.router.navigate(['home']);
+      
+                setTimeout(() => {
+                  this.router.navigate(['home']);
+                }, 5000);
+                          
     } catch (error) {
       console.log(error);
     }

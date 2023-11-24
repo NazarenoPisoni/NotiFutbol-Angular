@@ -28,6 +28,11 @@ export class MatchesComponent {
     { name: "Serie A", country: "Brazil" },
     { name: "Ligue 1", country: "France" },
     { name: "Ligue 2", country: "France" },
+    { name: "CONCACAF Nations League", country: "World"},
+    { name: "World Cup - Qualification South America", country: "World"},
+    { name: "World Cup - U17", country: "World"},
+    { name: "Copa del Rey", country: "Spain"},
+    { name: "Copa Argentina", country: "Argentina"}
   ];
   
 

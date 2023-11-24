@@ -17,7 +17,7 @@ export class LeagueInfoComponent {
 
   ngOnInit() {
     this.leagueId = this.route.snapshot.paramMap.get('id');
-    this.leagueService.getLeagueById(this.leagueId)
+    this.leagueService.getStandingById(this.leagueId)
     .then((data) => {
       this.league = data.response;
       console.log(data.response);
@@ -25,5 +25,7 @@ export class LeagueInfoComponent {
     .catch((error) => {
       console.log(error);
     })
-  }              
+  }            
+
+
 }
